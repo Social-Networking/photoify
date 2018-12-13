@@ -15,10 +15,12 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/account', function () {
-    return view('account');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Post routes
+Route::get('/posts', 'PostsController@index')->name('home');
+Route::get('/posts/create', 'PostsController@create')->name('create');
+Route::get('/posts', 'PostsController@store')->name('store');
+Route::get('/posts/{post}', 'PostsController@show')->name('show');
+Route::patch('/posts/{post}/edit', 'PostsController@edit')->name('edit');
+Route::delete('/posts/{post}', 'PostsController@destroy')->name('destroy');
