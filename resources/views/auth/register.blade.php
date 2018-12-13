@@ -1,9 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
+
 <div class="card has-background-dark">
     <div class="card-body is-transparent">
         <h1 class="is-size-2 is-size-4-touch has-text-white">Photoify</h1>
+        @if($errors->any())
+        <div class="notification is-warning">
+            <button class="delete"></button>
+            <p>{{ $errors->first() }}</p>
+        </div>
+        @endif
         <form method="POST" action="{{ route('register') }}">
 
             <!-- CSRF Token -->
@@ -35,6 +42,14 @@
                 </div>
             </div>
 
+            <!-- Passsword config input -->
+            <div class="field">
+                <label class="label has-text-white">{{ __('Confirm Password') }}</label>
+                <div class="control">
+                    <input class="input" type="password" name="password_confirmation" required>
+                </div>
+            </div>
+
             <!-- Submit button -->
             <div class="field">
                 <div class="control">
@@ -46,8 +61,8 @@
 
             <!-- Login form link -->
             <p>{{ __('Have an account?') }}<a class="has-text-primary has-text-right" href="{{ route('login') }}">
-                {{ __('Login') }}
-            </a></p>
+                    {{ __('Login') }}
+                </a></p>
         </form>
     </div>
 </div>
