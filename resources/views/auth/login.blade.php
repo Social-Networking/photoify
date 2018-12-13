@@ -57,7 +57,7 @@
             </div>
 
             <!-- Register link -->
-            <p> Need an account?<a class="has-text-primary has-text-right" href="{{ route('password.request') }}">
+            <p> Need an account?<a class="has-text-primary has-text-right" href="{{ route('register') }}">
                 {{ __('Register') }}
             </a></p>
         </form>
