@@ -4,7 +4,7 @@
 <div class="card has-background-dark">
     <div class="card-body is-transparent">
         <h1 class="is-size-2 is-size-4-touch has-text-white">Photoify</h1>
-        <form method="POST" action="{{ route('login') }}">
+        <form method="POST" action="{{ route('register') }}">
 
             <!-- CSRF Token -->
             @csrf
@@ -43,6 +43,8 @@
                     </button>
                 </div>
             </div>
+
+            <!-- Login form link -->
             <p>{{ __('Have an account?') }}<a class="has-text-primary has-text-right" href="{{ route('login') }}">
                 {{ __('Login') }}
             </a></p>
