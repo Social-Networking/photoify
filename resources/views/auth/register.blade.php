@@ -13,7 +13,7 @@
             <div class="field">
                 <label class="label has-text-white">{{ __('Your username') }}</label>
                 <div class="control">
-                    <input class="input" type="text" name="name" placeholder="John Doe" value="{{ old('name') }}"
+                    <input class="input" type="text" name="name" placeholder="JohnDoe" value="{{ old('name') }}"
                         required autofocus>
                 </div>
             </div>
@@ -23,7 +23,7 @@
                 <label class="label has-text-white">{{ __('E-Mail Address') }}</label>
                 <div class="control">
                     <input class="input" type="email" name="email" placeholder="john.doe@example.com" value="{{ old('email') }}"
-                        required autofocus>
+                        required>
                 </div>
             </div>
 
