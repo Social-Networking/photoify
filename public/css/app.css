@@ -12493,3 +12493,61 @@ label.panel-block:hover {
   padding: 3rem 1.5rem 6rem;
 }
 
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background: url("https://images.unsplash.com/photo-1504662880849-32592cd4884e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80");
+}
+
+main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 100vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.navbar {
+  margin-bottom: 3em;
+}
+
+.card {
+  width: 30rem;
+  height: 30rem;
+  max-width: 60vw;
+  border-radius: 16px;
+}
+
+.card .card-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
+  border-radius: 16px;
+  padding: 1.5rem;
+}
+
+/* Bulma fixes */
+
+.is-transparent {
+  background-color: transparent;
+  background-image: none;
+}
+
+.is-justify-end {
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
