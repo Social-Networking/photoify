@@ -20,12 +20,12 @@
 
 <body>
     <div id="app">
-        <nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+<nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
 
         <!-- Brand -->
             <div class="navbar-brand">
                 <a class="navbar-item" href="{{ url('/') }}">
-                    {{ config('app.name') }}
+                    {{ require public_path('svg/photoify_logo.svg') }}
                 </a>
             </div>
 
