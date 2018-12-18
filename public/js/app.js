@@ -757,7 +757,6 @@ module.exports = __webpack_require__(33);
 /* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
 /**
  * First, we will load all of this project's Javascript utilities and other
  * dependencies. Then, we will be ready to develop a robust and powerful
@@ -765,6 +764,18 @@ module.exports = __webpack_require__(33);
  */
 
 __webpack_require__(9);
+
+/* Doesnt work
+
+//Register .delete buttons to remove parent element
+const deleteButtons = document.querySelectorAll('.delete')
+
+deleteButtons.forEach(function (button) {
+    button.addEventListener('click', function (event) {
+        event.target.parentElement.parentElement.removeChild(parent)
+    })
+})
+*/
 
 /***/ }),
 /* 9 */
