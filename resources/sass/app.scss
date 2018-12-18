@@ -12,27 +12,31 @@ body {
 
 main {
     display: flex;
-    min-height: 100vh;
     justify-content: center;
+    min-height: 100vh;
 }
 
 .navbar {
     margin-bottom: 3em;
 }
 
+.navbar-brand > .navbar-item > svg {
+    fill: #fff;
+}
+
 .card {
+    max-width: 60vw;
     width: 30rem;
     height: 100%;
-    max-width: 60vw;
     border-radius: 16px;
 
     .card-body {
         display: flex;
-        justify-content: space-around;
         flex-direction: column;
+        justify-content: space-around;
+        padding: 1.5rem;
         height: 100%;
         border-radius: 16px;
-        padding: 1.5rem;
     }
 }
 
