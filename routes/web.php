@@ -18,9 +18,7 @@ Route::get('/', function () {
 Auth::routes();
 
 //Post routes
-Route::get('/posts', 'PostsController@index')->name('home');
+Route::get('/home', 'PostsController@index')->name('posts');
 Route::get('/posts/create', 'PostsController@create')->name('create');
-Route::get('/posts', 'PostsController@store')->name('store');
+Route::post('/posts', 'PostsController@store')->name('store');
 Route::get('/posts/{post}', 'PostsController@show')->name('show');
-Route::patch('/posts/{post}/edit', 'PostsController@edit')->name('edit');
-Route::delete('/posts/{post}', 'PostsController@destroy')->name('destroy');
