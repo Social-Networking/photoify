@@ -40,6 +40,25 @@ main {
     }
 }
 
+//Image preview
+.image-upload {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 15rem;
+    margin-bottom: 1rem;
+}
+
+//File upload button
+.image-upload.hidden > * {
+    opacity: 0;
+}
+
+.image-upload:hover > * {
+    transition: opacity 0.3s ease-in;
+    opacity: 1;
+}
+
 /* Bulma fixes */
 .is-transparent {
     background-color: transparent;

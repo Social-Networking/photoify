@@ -765,17 +765,43 @@ module.exports = __webpack_require__(33);
 
 __webpack_require__(9);
 
-/* Doesnt work
-
 //Register .delete buttons to remove parent element
-const deleteButtons = document.querySelectorAll('.delete')
+var deleteButtons = document.querySelectorAll('.delete');
 
 deleteButtons.forEach(function (button) {
     button.addEventListener('click', function (event) {
-        event.target.parentElement.parentElement.removeChild(parent)
-    })
-})
-*/
+        event.target.parentElement.parentElement.removeChild(parent);
+    });
+});
+
+//Image preview
+var imgContainer = document.querySelectorAll('.image-upload');
+
+imgContainer.forEach(function (img) {
+    img.querySelector('input').addEventListener('change', function (event) {
+        //Create file reader
+        var reader = new FileReader();
+
+        //Input file
+        var file = event.target.files[0];
+
+        var parent = event.target.closest('.image-upload');
+
+        //Register eventlistener for reader
+        //This event will be called once reader.readAsDataUrl has finished
+        reader.addEventListener('load', function () {
+            //Hide upload button, (shows on hover)
+            parent.classList.add('hidden');
+
+            //Set uploaded file as background on
+            parent.setAttribute('style', 'background: url(' + reader.result + ');\n                    background-size: contain;\n                    background-repeat: no-repeat;\n                    background-position: center;');
+        }, false);
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    });
+});
 
 /***/ }),
 /* 9 */

@@ -15597,6 +15597,30 @@ main {
   border-radius: 16px;
 }
 
+.image-upload {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 15rem;
+  margin-bottom: 1rem;
+}
+
+.image-upload.hidden > * {
+  opacity: 0;
+}
+
+.image-upload:hover > * {
+  -webkit-transition: opacity 0.3s ease-in;
+  transition: opacity 0.3s ease-in;
+  opacity: 1;
+}
+
 /* Bulma fixes */
 
 .is-transparent {
