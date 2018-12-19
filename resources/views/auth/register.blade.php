@@ -42,7 +42,7 @@
                 </div>
             </div>
 
-            <!-- Passsword config input -->
+            <!-- Passsword confirm input -->
             <div class="field">
                 <label class="label has-text-white">{{ __('Confirm Password') }}</label>
                 <div class="control">
