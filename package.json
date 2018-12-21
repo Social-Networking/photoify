@@ -20,7 +20,8 @@
         "bulma": "^0.7.2",
         "normalize.css": "^8.0.1",
         "stylelint": "^9.9.0",
-        "stylelint-scss": "^3.4.1"
+        "stylelint-scss": "^3.4.1",
+        "timeago.js": "^4.0.0-beta.2"
     },
     "stylelint": {
         "extends": "stylelint-config-recommended-scss"

@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 9);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -70,8 +70,8 @@
 "use strict";
 
 
-var bind = __webpack_require__(2);
-var isBuffer = __webpack_require__(15);
+var bind = __webpack_require__(3);
+var isBuffer = __webpack_require__(17);
 
 /*global toString:true*/
 
@@ -381,7 +381,7 @@ module.exports = {
 /* WEBPACK VAR INJECTION */(function(process) {
 
 var utils = __webpack_require__(0);
-var normalizeHeaderName = __webpack_require__(18);
+var normalizeHeaderName = __webpack_require__(20);
 
 var DEFAULT_CONTENT_TYPE = {
   'Content-Type': 'application/x-www-form-urlencoded'
@@ -397,10 +397,10 @@ function getDefaultAdapter() {
   var adapter;
   if (typeof XMLHttpRequest !== 'undefined') {
     // For browsers use XHR adapter
-    adapter = __webpack_require__(3);
+    adapter = __webpack_require__(4);
   } else if (typeof process !== 'undefined') {
     // For node use HTTP adapter
-    adapter = __webpack_require__(3);
+    adapter = __webpack_require__(4);
   }
   return adapter;
 }
@@ -475,10 +475,75 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = defaults;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(17)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(19)))
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getLocale = exports.register = void 0;
+
+/**
+ * Created by hustcc on 18/5/20.
+ * Contract: i@hust.cc
+ */
+var EN = 'second_minute_hour_day_week_month_year'.split('_');
+var ZH = '秒_分钟_小时_天_周_个月_年'.split('_');
+
+var zh_CN = function zh_CN(number, index) {
+  if (index === 0) return ['刚刚', '片刻后'];
+  var unit = ZH[parseInt(index / 2)];
+  return ["".concat(number, " ").concat(unit, "\u524D"), "".concat(number, " ").concat(unit, "\u540E")];
+};
+
+var en_US = function en_US(number, index) {
+  if (index === 0) return ['just now', 'right now'];
+  var unit = EN[parseInt(index / 2)];
+  if (number > 1) unit += 's';
+  return ["".concat(number, " ").concat(unit, " ago"), "in ".concat(number, " ").concat(unit)];
+};
+/**
+ * 所有的语言
+ * @type {{en: function(*, *), zh_CN: function(*, *)}}
+ */
+
+
+var Locales = {
+  en_US: en_US,
+  zh_CN: zh_CN
+};
+/**
+ * 注册语言
+ * @param locale
+ * @param func
+ */
+
+var register = function register(locale, func) {
+  Locales[locale] = func;
+};
+/**
+ * 获取语言函数
+ * @param locale
+ * @returns {*}
+ */
+
+
+exports.register = register;
+
+var getLocale = function getLocale(locale) {
+  return Locales[locale] || en_US;
+};
+
+exports.getLocale = getLocale;
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -496,19 +561,19 @@ module.exports = function bind(fn, thisArg) {
 
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var settle = __webpack_require__(19);
-var buildURL = __webpack_require__(21);
-var parseHeaders = __webpack_require__(22);
-var isURLSameOrigin = __webpack_require__(23);
-var createError = __webpack_require__(4);
-var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(24);
+var settle = __webpack_require__(21);
+var buildURL = __webpack_require__(23);
+var parseHeaders = __webpack_require__(24);
+var isURLSameOrigin = __webpack_require__(25);
+var createError = __webpack_require__(5);
+var btoa = (typeof window !== 'undefined' && window.btoa && window.btoa.bind(window)) || __webpack_require__(26);
 
 module.exports = function xhrAdapter(config) {
   return new Promise(function dispatchXhrRequest(resolve, reject) {
@@ -605,7 +670,7 @@ module.exports = function xhrAdapter(config) {
     // This is only done if running in a standard browser environment.
     // Specifically not if we're in a web worker, or react-native.
     if (utils.isStandardBrowserEnv()) {
-      var cookies = __webpack_require__(25);
+      var cookies = __webpack_require__(27);
 
       // Add xsrf header
       var xsrfValue = (config.withCredentials || isURLSameOrigin(config.url)) && config.xsrfCookieName ?
@@ -683,13 +748,13 @@ module.exports = function xhrAdapter(config) {
 
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var enhanceError = __webpack_require__(20);
+var enhanceError = __webpack_require__(22);
 
 /**
  * Create an Error with the specified message, config, error code, request and response.
@@ -708,7 +773,7 @@ module.exports = function createError(message, config, code, request, response) 
 
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -720,7 +785,7 @@ module.exports = function isCancel(value) {
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -746,15 +811,131 @@ module.exports = Cancel;
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(8);
-module.exports = __webpack_require__(33);
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.nextInterval = exports.diffSec = exports.formatDiff = exports.toDate = exports.toInt = void 0;
+
+/**
+ * Created by hustcc on 18/5/20.
+ * Contract: i@hust.cc
+ */
+var SEC_ARRAY = [60, 60, 24, 7, 365 / 7 / 12, 12];
+/**
+ * change f into int, remove decimal. Just for code compression
+ * @param f
+ * @returns {number}
+ */
+
+var toInt = function toInt(f) {
+  return parseInt(f);
+};
+/**
+ * format Date / string / timestamp to Date instance.
+ * @param input
+ * @returns {*}
+ */
+
+
+exports.toInt = toInt;
+
+var toDate = function toDate(input) {
+  if (input instanceof Date) return input;
+  if (!isNaN(input) || /^\d+$/.test(input)) return new Date(toInt(input));
+  input = (input || '').trim().replace(/\.\d+/, '') // remove milliseconds
+  .replace(/-/, '/').replace(/-/, '/').replace(/(\d)T(\d)/, '$1 $2').replace(/Z/, ' UTC') // 2017-2-5T3:57:52Z -> 2017-2-5 3:57:52UTC
+  .replace(/([\+\-]\d\d)\:?(\d\d)/, ' $1$2'); // -04:00 -> -0400
+
+  return new Date(input);
+};
+/**
+ * format the diff second to *** time ago, with setting locale
+ * @param diff
+ * @param localeFunc
+ * @returns {string | void | *}
+ */
+
+
+exports.toDate = toDate;
+
+var formatDiff = function formatDiff(diff, localeFunc) {
+  // if locale is not exist, use defaultLocale.
+  // if defaultLocale is not exist, use build-in `en`.
+  // be sure of no error when locale is not exist.
+  var i = 0,
+      agoin = diff < 0 ? 1 : 0,
+      // timein or timeago
+  total_sec = diff = Math.abs(diff);
+
+  for (; diff >= SEC_ARRAY[i] && i < SEC_ARRAY.length; i++) {
+    diff /= SEC_ARRAY[i];
+  }
+
+  diff = toInt(diff);
+  i *= 2;
+  if (diff > (i === 0 ? 9 : 1)) i += 1;
+  return localeFunc(diff, i, total_sec)[agoin].replace('%s', diff);
+};
+/**
+ * calculate the diff second between date to be formatted an now date.
+ * @param date
+ * @param nowDate
+ * @returns {number}
+ */
+
+
+exports.formatDiff = formatDiff;
+
+var diffSec = function diffSec(date, nowDate) {
+  nowDate = nowDate ? toDate(nowDate) : new Date();
+  return (nowDate - toDate(date)) / 1000;
+};
+/**
+ * nextInterval: calculate the next interval time.
+ * - diff: the diff sec between now and date to be formatted.
+ *
+ * What's the meaning?
+ * diff = 61 then return 59
+ * diff = 3601 (an hour + 1 second), then return 3599
+ * make the interval with high performance.
+ **/
+
+
+exports.diffSec = diffSec;
+
+var nextInterval = function nextInterval(diff) {
+  var rst = 1,
+      i = 0,
+      d = Math.abs(diff);
+
+  for (; diff >= SEC_ARRAY[i] && i < SEC_ARRAY.length; i++) {
+    diff /= SEC_ARRAY[i];
+    rst *= SEC_ARRAY[i];
+  }
+
+  d = d % rst;
+  d = d ? rst - d : rst;
+  return Math.ceil(d);
+};
+
+exports.nextInterval = nextInterval;
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(10);
+module.exports = __webpack_require__(39);
 
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -763,7 +944,10 @@ module.exports = __webpack_require__(33);
  * application frontend using useful Laravel and JavaScript libraries.
  */
 
-__webpack_require__(9);
+__webpack_require__(11);
+
+//Human readable dates
+window.timeago.render(document.querySelector('time'));
 
 //Register .delete buttons to remove parent element
 var deleteButtons = document.querySelectorAll('.delete');
@@ -804,11 +988,10 @@ imgContainer.forEach(function (img) {
 });
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
-
-window._ = __webpack_require__(10);
+window._ = __webpack_require__(12);
 
 /**
  * We'll load the axios HTTP library which allows us to easily issue requests
@@ -816,7 +999,7 @@ window._ = __webpack_require__(10);
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-window.axios = __webpack_require__(13);
+window.axios = __webpack_require__(15);
 
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
@@ -851,8 +1034,11 @@ if (token) {
 //     encrypted: true
 // });
 
+//Human readable timeago
+window.timeago = __webpack_require__(35);
+
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -17964,10 +18150,10 @@ if (token) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(11), __webpack_require__(12)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(13), __webpack_require__(14)(module)))
 
 /***/ }),
-/* 11 */
+/* 13 */
 /***/ (function(module, exports) {
 
 var g;
@@ -17994,7 +18180,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 12 */
+/* 14 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -18022,21 +18208,21 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 13 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(14);
+module.exports = __webpack_require__(16);
 
 /***/ }),
-/* 14 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var bind = __webpack_require__(2);
-var Axios = __webpack_require__(16);
+var bind = __webpack_require__(3);
+var Axios = __webpack_require__(18);
 var defaults = __webpack_require__(1);
 
 /**
@@ -18070,15 +18256,15 @@ axios.create = function create(instanceConfig) {
 };
 
 // Expose Cancel & CancelToken
-axios.Cancel = __webpack_require__(6);
-axios.CancelToken = __webpack_require__(31);
-axios.isCancel = __webpack_require__(5);
+axios.Cancel = __webpack_require__(7);
+axios.CancelToken = __webpack_require__(33);
+axios.isCancel = __webpack_require__(6);
 
 // Expose all/spread
 axios.all = function all(promises) {
   return Promise.all(promises);
 };
-axios.spread = __webpack_require__(32);
+axios.spread = __webpack_require__(34);
 
 module.exports = axios;
 
@@ -18087,7 +18273,7 @@ module.exports.default = axios;
 
 
 /***/ }),
-/* 15 */
+/* 17 */
 /***/ (function(module, exports) {
 
 /*!
@@ -18114,7 +18300,7 @@ function isSlowBuffer (obj) {
 
 
 /***/ }),
-/* 16 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18122,8 +18308,8 @@ function isSlowBuffer (obj) {
 
 var defaults = __webpack_require__(1);
 var utils = __webpack_require__(0);
-var InterceptorManager = __webpack_require__(26);
-var dispatchRequest = __webpack_require__(27);
+var InterceptorManager = __webpack_require__(28);
+var dispatchRequest = __webpack_require__(29);
 
 /**
  * Create a new instance of Axios
@@ -18200,7 +18386,7 @@ module.exports = Axios;
 
 
 /***/ }),
-/* 17 */
+/* 19 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -18390,7 +18576,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 18 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18409,13 +18595,13 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 
 
 /***/ }),
-/* 19 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var createError = __webpack_require__(4);
+var createError = __webpack_require__(5);
 
 /**
  * Resolve or reject a Promise based on response status.
@@ -18442,7 +18628,7 @@ module.exports = function settle(resolve, reject, response) {
 
 
 /***/ }),
-/* 20 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18470,7 +18656,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
 
 
 /***/ }),
-/* 21 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18543,7 +18729,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 
 
 /***/ }),
-/* 22 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18603,7 +18789,7 @@ module.exports = function parseHeaders(headers) {
 
 
 /***/ }),
-/* 23 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18678,7 +18864,7 @@ module.exports = (
 
 
 /***/ }),
-/* 24 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18721,7 +18907,7 @@ module.exports = btoa;
 
 
 /***/ }),
-/* 25 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18781,7 +18967,7 @@ module.exports = (
 
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18840,18 +19026,18 @@ module.exports = InterceptorManager;
 
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var utils = __webpack_require__(0);
-var transformData = __webpack_require__(28);
-var isCancel = __webpack_require__(5);
+var transformData = __webpack_require__(30);
+var isCancel = __webpack_require__(6);
 var defaults = __webpack_require__(1);
-var isAbsoluteURL = __webpack_require__(29);
-var combineURLs = __webpack_require__(30);
+var isAbsoluteURL = __webpack_require__(31);
+var combineURLs = __webpack_require__(32);
 
 /**
  * Throws a `Cancel` if cancellation has been requested.
@@ -18933,7 +19119,7 @@ module.exports = function dispatchRequest(config) {
 
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18960,7 +19146,7 @@ module.exports = function transformData(data, headers, fns) {
 
 
 /***/ }),
-/* 29 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18981,7 +19167,7 @@ module.exports = function isAbsoluteURL(url) {
 
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19002,13 +19188,13 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 
 
 /***/ }),
-/* 31 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var Cancel = __webpack_require__(6);
+var Cancel = __webpack_require__(7);
 
 /**
  * A `CancelToken` is an object that can be used to request cancellation of an operation.
@@ -19066,7 +19252,7 @@ module.exports = CancelToken;
 
 
 /***/ }),
-/* 32 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -19100,7 +19286,209 @@ module.exports = function spread(callback) {
 
 
 /***/ }),
-/* 33 */
+/* 35 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+Object.defineProperty(exports, "format", {
+  enumerable: true,
+  get: function get() {
+    return _format.format;
+  }
+});
+Object.defineProperty(exports, "render", {
+  enumerable: true,
+  get: function get() {
+    return _realtime.render;
+  }
+});
+Object.defineProperty(exports, "cancel", {
+  enumerable: true,
+  get: function get() {
+    return _realtime.cancel;
+  }
+});
+Object.defineProperty(exports, "register", {
+  enumerable: true,
+  get: function get() {
+    return _locales.register;
+  }
+});
+exports.version = void 0;
+
+var _format = __webpack_require__(36);
+
+var _realtime = __webpack_require__(37);
+
+var _locales = __webpack_require__(2);
+
+/**
+ * Created by hustcc on 18/5/20.
+ * Contract: i@hust.cc
+ */
+var version = "4.0.0-beta.2";
+exports.version = version;
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.format = void 0;
+
+var _date = __webpack_require__(8);
+
+var _locales = __webpack_require__(2);
+
+var format = function format(date, locale, nowDate) {
+  // diff seconds
+  var sec = (0, _date.diffSec)(date, nowDate); // format it with locale
+
+  return (0, _date.formatDiff)(sec, (0, _locales.getLocale)(locale));
+};
+
+exports.format = format;
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.render = exports.cancel = void 0;
+
+var _dom = __webpack_require__(38);
+
+var _date = __webpack_require__(8);
+
+var _locales = __webpack_require__(2);
+
+// 所有的 timer
+var TimerPool = {};
+
+var clear = function clear(tid) {
+  clearTimeout(tid);
+  delete TimerPool[tid];
+}; // 定时运行
+
+
+var run = function run(node, date, localeFunc, nowDate) {
+  // 先清理掉之前的
+  clear((0, _dom.getTimerId)(node)); // get diff seconds
+
+  var diff = (0, _date.diffSec)(date, nowDate); // render
+
+  node.innerHTML = (0, _date.formatDiff)(diff, localeFunc);
+  var tid = setTimeout(function () {
+    run(node, date, localeFunc, nowDate);
+  }, (0, _date.nextInterval)(diff) * 1000, 0x7FFFFFFF); // there is no need to save node in object. Just save the key
+
+  TimerPool[tid] = 0;
+  (0, _dom.saveTimerId)(node, tid);
+}; // 取消一个 node 的实时渲染
+
+
+var cancel = function cancel(node) {
+  if (node) clear((0, _dom.getTimerId)(node)); // get the timer of DOM node(native / jq).
+  else for (var tid in TimerPool) {
+      clear(tid);
+    }
+}; // 实时渲染一系列节点
+
+
+exports.cancel = cancel;
+
+var render = function render(nodes, locale, nowDate) {
+  // by .length
+  if (nodes.length === undefined) nodes = [nodes];
+  var node;
+
+  for (var i = 0; i < nodes.length; i++) {
+    node = nodes[i];
+    var date = (0, _dom.getDateAttribute)(node);
+    var localeFunc = (0, _locales.getLocale)(locale);
+    run(node, date, localeFunc, nowDate);
+  }
+
+  return nodes;
+};
+
+exports.render = render;
+
+/***/ }),
+/* 38 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.getTimerId = exports.saveTimerId = exports.getDateAttribute = void 0;
+var ATTR_TIMEAGO_TID = 'timeago-tid';
+var ATTR_DATETIME = 'datetime';
+/**
+ * get the node attribute, native DOM and jquery supported.
+ * @param node
+ * @param name
+ * @returns {*}
+ */
+
+var getAttribute = function getAttribute(node, name) {
+  if (node.getAttribute) return node.getAttribute(name); // native dom
+
+  if (node.attr) return node.attr(name); // jquery dom
+};
+/**
+ * get the datetime attribute, `data-timeagp` / `datetime` are supported.
+ * @param node
+ * @returns {*}
+ */
+
+
+var getDateAttribute = function getDateAttribute(node) {
+  return getAttribute(node, ATTR_DATETIME);
+};
+/**
+ * set the node attribute, native DOM and jquery supported.
+ * @param node
+ * @param timerId
+ * @returns {*}
+ */
+
+
+exports.getDateAttribute = getDateAttribute;
+
+var saveTimerId = function saveTimerId(node, timerId) {
+  if (node.setAttribute) return node.setAttribute(ATTR_TIMEAGO_TID, timerId);
+  if (node.attr) return node.attr(ATTR_TIMEAGO_TID, timerId);
+};
+
+exports.saveTimerId = saveTimerId;
+
+var getTimerId = function getTimerId(node) {
+  return getAttribute(node, ATTR_TIMEAGO_TID);
+};
+
+exports.getTimerId = getTimerId;
+
+/***/ }),
+/* 39 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

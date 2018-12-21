@@ -6,11 +6,14 @@
 
 require('./bootstrap')
 
+//Human readable dates
+window.timeago.render(document.querySelector('time'))
+
 //Register .delete buttons to remove parent element
 const deleteButtons = document.querySelectorAll('.delete')
 
-deleteButtons.forEach(function(button) {
-    button.addEventListener('click', function(event) {
+deleteButtons.forEach(function (button) {
+    button.addEventListener('click', function (event) {
         event.target.parentElement.parentElement.removeChild(parent)
     })
 })
@@ -18,8 +21,8 @@ deleteButtons.forEach(function(button) {
 //Image preview
 const imgContainer = document.querySelectorAll('.image-upload')
 
-imgContainer.forEach(function(img) {
-    img.querySelector('input').addEventListener('change', function(event) {
+imgContainer.forEach(function (img) {
+    img.querySelector('input').addEventListener('change', function (event) {
         //Create file reader
         let reader = new FileReader()
 
@@ -32,7 +35,7 @@ imgContainer.forEach(function(img) {
         //This event will be called once reader.readAsDataUrl has finished
         reader.addEventListener(
             'load',
-            function() {
+            function () {
                 //Hide upload button, (shows on hover)
                 parent.classList.add('hidden')
 
