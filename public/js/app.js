@@ -947,7 +947,7 @@ module.exports = __webpack_require__(39);
 __webpack_require__(11);
 
 //Human readable dates
-window.timeago.render(document.querySelector('time'));
+window.timeago.render(document.querySelectorAll('time'));
 
 //Register .delete buttons to remove parent element
 var deleteButtons = document.querySelectorAll('.delete');

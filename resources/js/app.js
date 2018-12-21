@@ -7,7 +7,7 @@
 require('./bootstrap')
 
 //Human readable dates
-window.timeago.render(document.querySelector('time'))
+window.timeago.render(document.querySelectorAll('time'))
 
 //Register .delete buttons to remove parent element
 const deleteButtons = document.querySelectorAll('.delete')
