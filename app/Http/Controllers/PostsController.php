@@ -23,8 +23,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //TODO: Add posts data
-        return view('posts.index');
+        return view('posts.index', [
+            'posts' => Post::all(),
+        ]);
     }
 
     /**
@@ -75,7 +76,9 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        return view('posts');
+        return view('posts.index', [
+            'posts' => [Post::findOrFail($id)],
+        ]);
     }
 
     /**
