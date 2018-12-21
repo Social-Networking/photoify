@@ -14,10 +14,11 @@ class Posts extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
-            $table->string('title', 64);
-            //Add image field
-            $table->text('content');
-            $table->timestamp('created_at');
+
+            $table->text('image');
+            $table->text('description');
+
+            $table->nullableTimestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
         });
