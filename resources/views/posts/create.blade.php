@@ -10,16 +10,20 @@
             <p>{{ $errors->first() }}</p>
         </div>
         @endif
-        <form method="POST" action="{{ route('posts') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('store') }}" enctype="multipart/form-data">
 
             <!-- CSRF Token -->
             @csrf
+
+            <!-- Method -->
+
+            @method('PUT')
 
             <!-- Image input -->
             <div class="image-upload">
                 <div class="file is-boxed">
                     <label class="file-label">
-                        <input class="file-input" type="file" name="resume">
+                        <input class="file-input" type="file" name="image">
                         <span class="file-cta">
                         <span class="file-icon">
                             <i class="fas fa-upload"></i>
@@ -37,7 +41,7 @@
             <div class="field">
                 <label class="label has-text-white">{{ __('Description') }}</label>
                 <div class="control">
-                    <textarea class="textarea" placeholder="e.g. Hello world" required autofocus></textarea>
+                    <textarea name="description" class="textarea" placeholder="e.g. Hello world" required autofocus></textarea>
                 </div>
             </div>
 
