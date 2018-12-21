@@ -20,5 +20,5 @@ Auth::routes();
 //Post routes
 Route::get('/home', 'PostsController@index')->name('posts');
 Route::get('/posts/create', 'PostsController@create')->name('create');
-Route::post('/posts', 'PostsController@store')->name('store');
+Route::put('/posts', 'PostsController@store')->name('store');
 Route::get('/posts/{post}', 'PostsController@show')->name('show');
