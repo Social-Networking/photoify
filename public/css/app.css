@@ -12512,6 +12512,19 @@ main {
   min-height: 100vh;
 }
 
+.like {
+  color: #414141;
+}
+
+.like svg {
+  width: 2rem !important;
+  height: 2rem !important;
+}
+
+.like :hover {
+  color: red;
+}
+
 .navbar {
   margin-bottom: 3em;
 }
@@ -12520,11 +12533,22 @@ main {
   fill: #fff;
 }
 
+.card-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
 .card {
   max-width: 90vw;
   width: 30rem;
-  height: 100%;
   border-radius: 16px;
+  margin: 0 3rem 3rem;
 }
 
 .card .card-body {
@@ -12535,8 +12559,9 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
   padding: 1.5rem;
   height: 100%;
   border-radius: 16px;
@@ -12552,7 +12577,7 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 0.5rem 1.5rem;
+  padding: 1.5rem 1.5rem 0.5rem;
 }
 
 .card .card-body .card-userinfo figure {
@@ -12561,6 +12586,16 @@ main {
 
 .card .card-body .card-content {
   padding-top: 0.5rem;
+}
+
+.card .card-body .card-content .card-timebox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 100%;
 }
 
 .card-image img {
@@ -12592,19 +12627,6 @@ main {
   -webkit-transition: opacity 0.3s ease-in;
   transition: opacity 0.3s ease-in;
   opacity: 1;
-}
-
-.like {
-  color: #414141;
-}
-
-.like svg {
-  width: 2rem !important;
-  height: 2rem !important;
-}
-
-.like :hover {
-  color: red;
 }
 
 /* Bulma fixes */
