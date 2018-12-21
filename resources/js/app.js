@@ -39,10 +39,7 @@ imgContainer.forEach(function(img) {
                 //Set uploaded file as background on
                 parent.setAttribute(
                     'style',
-                    `background: url(${reader.result});
-                    background-size: contain;
-                    background-repeat: no-repeat;
-                    background-position: center;`,
+                    `background-image: url(${reader.result});`,
                 )
             },
             false,

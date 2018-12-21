@@ -794,7 +794,7 @@ imgContainer.forEach(function (img) {
             parent.classList.add('hidden');
 
             //Set uploaded file as background on
-            parent.setAttribute('style', 'background: url(' + reader.result + ');\n                    background-size: contain;\n                    background-repeat: no-repeat;\n                    background-position: center;');
+            parent.setAttribute('style', 'background-image: url(' + reader.result + ');');
         }, false);
 
         if (file) {

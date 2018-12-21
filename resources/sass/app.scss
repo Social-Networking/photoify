@@ -47,6 +47,9 @@ main {
     align-items: center;
     height: 15rem;
     margin-bottom: 1rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 //File upload button
