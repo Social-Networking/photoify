@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="card has-background-dark">
+<div class="card has-background-dark h100">
     <div class="card-body is-transparent">
         <h1 class="is-size-2 is-size-4-touch has-text-white">Photoify</h1>
         <form method="POST" action="{{ route('login') }}">
