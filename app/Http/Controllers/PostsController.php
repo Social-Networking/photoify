@@ -90,7 +90,9 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        return view('posts.create');
+        return view('posts.edit', [
+            'post' => Post::findOrFail($id),
+        ]);
     }
 
     /**
@@ -103,6 +105,20 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $post = Post::find($id);
+
+        //Only save if currently logged in users id matches orginal posters user id (Might not be needed)
+        if ($post->id === Auth::id()) {
+            $request->validate([
+                'description' => 'required|max:255',
+            ]);
+
+            $post->description = $request->description;
+
+            $post->save();
+        }
+
+        return redirect('posts/'.$post->id);
     }
 
     /**
@@ -114,5 +130,13 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
+        $post = Post::find($id);
+
+        //Only delete if currently logged in users id matches orginal posters user id (Might not be needed)
+        if ($post->id === Auth::id()) {
+            $post->delete();
+        }
+
+        return redirect('posts/');
     }
 }
