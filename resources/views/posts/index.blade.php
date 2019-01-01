@@ -18,8 +18,8 @@
                         <img class="is-rounded" src="{{ asset('images/'.$post->image) }}">
                     </figure>
                     <div>
-                        <p class="title is-4 has-text-white">John Smith</p>
-                        <p class="subtitle is-6 has-text-info">@johnsmith</p>
+                        <p class="title is-4 has-text-white">{{ $post->user->name }}</p>
+                        <p class="subtitle is-6 has-text-info">{{ '@'.$post->user->name }}</p>
                     </div>
                 </div>
 
