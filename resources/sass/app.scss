@@ -12,7 +12,7 @@ body {
 main {
     display: flex;
     justify-content: center;
-    min-height: 100vh;
+    flex-direction: column;
 }
 
 //Like button
@@ -28,10 +28,6 @@ main {
     :hover {
         color: rgb(255, 0, 0);
     }
-}
-
-.navbar {
-    margin-bottom: 3em;
 }
 
 .navbar-brand>.navbar-item>svg {
@@ -84,6 +80,23 @@ main {
 
 .card-image img {
     border-radius: 16px 16px 0px 0px;
+}
+
+.user-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding: 1.5rem 8rem;
+    background: whitesmoke;
+
+    .user-start {
+        align-items: center;
+    }
+
+    div {
+        height: 100%;
+    }
 }
 
 //Image preview

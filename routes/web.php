@@ -25,3 +25,6 @@ Route::get('/posts/{post}', 'PostsController@show')->name('show');
 Route::get('/posts/{post}/edit', 'PostsController@edit')->name('edit');
 Route::patch('/posts/{post}', 'PostsController@update')->name('update');
 Route::delete('/posts/{post}', 'PostsController@destroy')->name('destroy');
+
+//Users
+Route::get('/user/{user}', 'UsersController@show')->name('profile');
