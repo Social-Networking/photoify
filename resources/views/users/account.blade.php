@@ -4,7 +4,7 @@
 <div class="card has-background-dark">
     <div class="card-body is-transparent">
         <h1 class="is-size-2 is-size-4-touch has-text-white">My account</h1>
-        <form method="POST" action="{{ route('/account/settings') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('account.update') }}" enctype="multipart/form-data">
 
             <!-- CSRF Token -->
             @csrf
