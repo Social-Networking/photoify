@@ -36,6 +36,10 @@ main {
 }
 
 /* NAV */
+.navbar-item svg {
+    margin-right: 5px;
+}
+
 .navbar-brand {
     display: flex;
     position: absolute;

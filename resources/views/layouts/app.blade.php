@@ -36,14 +36,18 @@
             <!-- Navbar-start -->
             <div id="navbar" class="navbar-menu">
                 <div class="navbar-start">
+                    @if(Auth::check())
+                    <div class="navbar-item">
+                        <a class="button is-info" href="{{ route('create') }}">
+                            <i class="fas fa-camera-retro"></i>{{ __('Create') }}
+                        </a>
+                    </div>
+                    @endif
                     <a class="navbar-item" href="{{ route('posts') }}">
-                        {{ __('My Feed') }}
+                        <i class="fas fa-user-friends"></i>{{ __('Following') }}
                     </a>
                     <a class="navbar-item" href="{{ route('posts') }}">
-                        {{ __('Following') }}
-                    </a>
-                    <a class="navbar-item" href="{{ route('posts') }}">
-                        {{ __('Trending') }}
+                        <i class="fas fa-chart-line"></i>{{ __('Trending') }}
                     </a>
 
                 </div>
@@ -53,7 +57,7 @@
                 <div class="navbar-end">
                     <div class="navbar-item">
                         <div class="buttons">
-                            <a class="button is-light" href="{{ route('account') }}">
+                            <a class="button is-primary is-outlined" href="{{ route('account') }}">
                                 {{ __('My Account') }}
                             </a>
                             <form method="POST" action="{{ route('logout') }}">
@@ -68,10 +72,10 @@
                 <div class="navbar-end">
                     <div class="navbar-item">
                         <div class="buttons">
-                            <a class="button is-primary" href="{{ route('register') }}">
+                            <a class="button is-primary is-outlined" href="{{ route('register') }}">
                                 <strong>{{ __('Sign up') }}</strong>
                             </a>
-                            <a class="button is-light" href="{{ route('login') }}">
+                            <a class="button is-primary" href="{{ route('login') }}">
                                 {{ __('Log in') }}
                             </a>
                         </div>

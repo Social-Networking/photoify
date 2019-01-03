@@ -12535,6 +12535,10 @@ main {
 
 /* NAV */
 
+.navbar-item svg {
+  padding-right: 5px;
+}
+
 .navbar-brand {
   display: -webkit-box;
   display: -ms-flexbox;
