@@ -12515,6 +12515,10 @@ main {
           flex-direction: column;
 }
 
+#app {
+  min-height: 100vh;
+}
+
 .like {
   color: #414141;
 }
