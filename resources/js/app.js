@@ -22,6 +22,20 @@ deleteButtons.forEach(function (button) {
 const imgContainer = document.querySelectorAll('.image-upload')
 
 imgContainer.forEach(function (img) {
+
+    //Allows us to set preview image serverside
+    if (img.dataset.image.length > 0) {
+        let parent = img.closest('.image-upload')
+        //Hide upload button, (shows on hover)
+        parent.classList.add('hidden')
+
+        parent.setAttribute(
+            'style',
+            `background-image: url(${img.dataset.image});`,
+        )
+    }
+
+    //Eventlistener for previewing imag
     img.querySelector('input').addEventListener('change', function (event) {
         //Create file reader
         let reader = new FileReader()

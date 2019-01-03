@@ -962,6 +962,17 @@ deleteButtons.forEach(function (button) {
 var imgContainer = document.querySelectorAll('.image-upload');
 
 imgContainer.forEach(function (img) {
+
+    //Allows us to set preview image serverside
+    if (img.dataset.image.length > 0) {
+        var _parent = img.closest('.image-upload');
+        //Hide upload button, (shows on hover)
+        _parent.classList.add('hidden');
+
+        _parent.setAttribute('style', 'background-image: url(' + img.dataset.image + ');');
+    }
+
+    //Eventlistener for previewing imag
     img.querySelector('input').addEventListener('change', function (event) {
         //Create file reader
         var reader = new FileReader();
