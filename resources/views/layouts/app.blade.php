@@ -20,29 +20,40 @@
 
 <body>
     <div id="app">
-<nav class="navbar is-light" role="navigation" aria-label="main navigation">
-
-        <!-- Brand -->
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <!-- Brand -->
             <div class="navbar-brand">
                 <a class="navbar-item" href="{{ url('/') }}">
-                    {{ require public_path('svg/photoify_logo.svg') }}
+                    {!! file_get_contents(public_path('svg/photoify_logo.svg')) !!}
+                </a>
+                <a role="button" class="navbar-burger" aria-label="menu" data-target=".navbar-menu" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                 </a>
             </div>
 
-        <!-- Navbar-start -->
+            <!-- Navbar-start -->
             <div id="navbar" class="navbar-menu">
                 <div class="navbar-start">
-                    <a class="navbar-item" href="{{ url('/home') }}">
-                        {{ __('Home') }}
+                    <a class="navbar-item" href="{{ route('posts') }}">
+                        {{ __('My Feed') }}
                     </a>
+                    <a class="navbar-item" href="{{ route('posts') }}">
+                        {{ __('Following') }}
+                    </a>
+                    <a class="navbar-item" href="{{ route('posts') }}">
+                        {{ __('Trending') }}
+                    </a>
+
                 </div>
 
-        <!-- Navbar-end -->
+                <!-- Navbar-end -->
                 @if(Auth::check())
                 <div class="navbar-end">
                     <div class="navbar-item">
                         <div class="buttons">
-                            <a class="button is-light" href="">
+                            <a class="button is-light" href="{{ route('account') }}">
                                 {{ __('My Account') }}
                             </a>
                             <form method="POST" action="{{ route('logout') }}">
@@ -77,7 +88,8 @@
     </div>
 
     <script src="{{ asset('js/app.js') }}"></script>
-    <script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.6.3/js/all.js" integrity="sha384-EIHISlAOj4zgYieurP0SdoiBYfGJKkgWedPHH4jCzpCXLmzVsw1ouK59MuUtP4a1"
+        crossorigin="anonymous"></script>
 </body>
 
 </html>

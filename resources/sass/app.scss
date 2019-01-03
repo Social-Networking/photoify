@@ -10,6 +10,7 @@ body {
 }
 
 main {
+    margin-top: 2rem;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -34,10 +35,26 @@ main {
     }
 }
 
-.navbar-brand>.navbar-item>svg {
-    fill: #fff;
+/* NAV */
+.navbar-brand {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    width: 100%;
+
+    svg {
+        width: 5rem;
+        height: 100%;
+    }
 }
 
+@media screen and (max-width: 1087px) {
+    .navbar-menu.is-active .navbar-start {
+        margin-top: 2.5rem;
+    }
+}
+
+/* CARD */
 .card-container {
     display: flex;
     flex-wrap: wrap;

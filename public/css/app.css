@@ -12503,6 +12503,7 @@ body {
 }
 
 main {
+  margin-top: 2rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12532,9 +12533,31 @@ main {
   color: red;
 }
 
-.navbar-brand > .navbar-item > svg {
-  fill: #fff;
+/* NAV */
+
+.navbar-brand {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
 }
+
+.navbar-brand svg {
+  width: 5rem;
+  height: 100%;
+}
+
+@media screen and (max-width: 1087px) {
+  .navbar-menu.is-active .navbar-start {
+    margin-top: 2.5rem;
+  }
+}
+
+/* CARD */
 
 .card-container {
   display: -webkit-box;

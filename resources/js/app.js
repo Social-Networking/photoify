@@ -53,3 +53,13 @@ imgContainer.forEach(function (img) {
         }
     })
 })
+
+//Navbar burger
+const burgerToggle = document.querySelector('.navbar-burger')
+
+burgerToggle.addEventListener('click', event => {
+    let target = document.querySelector(event.target.dataset.target)
+
+    event.target.classList.toggle('is-active')
+    target.classList.toggle('is-active')
+})
