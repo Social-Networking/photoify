@@ -16,7 +16,14 @@
                 </div>
             </div>
             <div class="user-end">
-                <a class="button is-link is-outlined">Follow</a>
+                <form method="POST">
+                    @csrf
+                        @if($followed)
+                            <input type="submit" class="button is-link is-outlined" value="Follow">
+                        @else
+                            <input type="submit" class="button is-danger is-outlined" value="Unfollow">
+                        @endif
+                </form>
             </div>
         </div>
 

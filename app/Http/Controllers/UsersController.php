@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Follow;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -19,6 +20,10 @@ class UsersController extends Controller
     {
         return view('users.user', [
             'user' => User::findOrFail($id),
+            'followed' => Follow::where([
+                ['user_1', Auth::id()],
+                ['user_2', $id],
+            ])->exists(),
         ]);
     }
 
@@ -50,5 +55,28 @@ class UsersController extends Controller
         $user->save();
 
         return redirect('user/'.Auth::id());
+    }
+
+    public function follow($id)
+    {
+        $record = Follow::where([
+            ['user_1', Auth::id()],
+            ['user_2', $id],
+        ]);
+
+        //If our record doesn't exist we create it
+        if (null === $record->first()) {
+            $follow = new Follow();
+
+            $follow->user_1 = Auth::id();
+            $follow->user_2 = $id;
+            $follow->save();
+
+        //If it exists we delete it
+        } else {
+            $record->delete();
+        }
+
+        return redirect()->route('account.show', ['id' => $id]);
     }
 }
