@@ -36,9 +36,11 @@ class UsersController extends Controller
 
         //Update image if new one provided
         if (null !== $request->image) {
-            $user->image = $request->image;
             $imageName = time().'.'.$request->image->getClientOriginalExtension();
+
             $request->image->move(public_path('images'), $imageName);
+
+            $user->image = $imageName;
         }
 
         //Update rest if set.
