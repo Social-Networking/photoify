@@ -9,7 +9,7 @@
         <div class="card-userinfo">
             <div class="is-flex is-v-center">
                 <figure class="image is-48x48">
-                    <img class="is-rounded" src="{{ asset('images/'.$post->image) }}">
+                    <img class="is-rounded" src="{{ asset('images/'.$post->user->image) }}">
                 </figure>
                 <div class="user-text">
                     <p class="is-size-3 has-text-white">{{ $post->user->name }}</p>
