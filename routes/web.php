@@ -27,4 +27,5 @@ Route::patch('/posts/{post}', 'PostsController@update')->name('update');
 Route::delete('/posts/{post}', 'PostsController@destroy')->name('destroy');
 
 //Users
+Route::get('/account', 'UsersController@index')->name('account');
 Route::get('/user/{user}', 'UsersController@show')->name('profile');
