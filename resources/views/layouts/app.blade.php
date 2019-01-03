@@ -20,7 +20,7 @@
 
 <body>
     <div id="app">
-<nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
+<nav class="navbar is-light" role="navigation" aria-label="main navigation">
 
         <!-- Brand -->
             <div class="navbar-brand">
