@@ -4,6 +4,12 @@
 <div class="card has-background-dark h100">
     <div class="card-body is-transparent">
         <h1 class="is-size-2 is-size-4-touch has-text-white">Photoify</h1>
+        @if($errors->any())
+        <div class="notification is-warning">
+            <button class="delete"></button>
+            <p>{{ $errors->first() }}</p>
+        </div>
+        @endif
         <form method="POST" action="{{ route('login') }}">
 
             <!-- CSRF Token -->
@@ -28,23 +34,23 @@
 
             <div class="columns">
 
-            <!-- Forgot your password link -->
+                <!-- Forgot your password link -->
                 <a class="column has-text-primary" href="{{ route('password.request') }}">
                     {{ __('Forgot Your Password?') }}
                 </a>
 
 
-            <!-- Remember me check -->
-            <div class="column field">
-                <div class="is-flex is-justify-end control">
-                    <label class="checkbox has-text-white" for="remember">
-                        <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                            {{ old('remember') ? 'checked' : '' }}>
+                <!-- Remember me check -->
+                <div class="column field">
+                    <div class="is-flex is-justify-end control">
+                        <label class="checkbox has-text-white" for="remember">
+                            <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                {{ old('remember') ? 'checked' : '' }}>
 
-                        {{ __('Remember Me?') }}
-                    </label>
+                            {{ __('Remember Me?') }}
+                        </label>
+                    </div>
                 </div>
-            </div>
             </div>
 
             <!-- Submit button -->
@@ -58,8 +64,8 @@
 
             <!-- Register link -->
             <p> Need an account?<a class="has-text-primary has-text-right" href="{{ route('register') }}">
-                {{ __('Register') }}
-            </a></p>
+                    {{ __('Register') }}
+                </a></p>
         </form>
     </div>
 </div>
