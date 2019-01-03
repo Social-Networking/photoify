@@ -12644,21 +12644,26 @@ main {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  margin-top: -2rem;
   margin-bottom: 30px;
-  padding: 1.5rem 8rem;
-  background: whitesmoke;
+  padding: 1.5rem 1.5rem;
+  width: 100%;
+  background: white;
 }
 
 .user-container .user-start {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+}
+
+.user-container .user-start figure {
+  margin-right: 1rem;
 }
 
 .user-container div {

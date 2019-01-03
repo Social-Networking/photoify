@@ -119,14 +119,20 @@ main {
 
 .user-container {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
+    margin-top: -2rem;
     margin-bottom: 30px;
-    padding: 1.5rem 8rem;
-    background: whitesmoke;
+    padding: 1.5rem 1.5rem;
+    width: 100%;
+    background: white;
 
     .user-start {
         align-items: center;
+
+        figure {
+            margin-right: 1rem;
+        }
     }
 
     div {
