@@ -24,7 +24,7 @@ const imgContainer = document.querySelectorAll('.image-upload')
 imgContainer.forEach(function (img) {
 
     //Allows us to set preview image serverside
-    if (img.dataset.image.length > 0) {
+    if (img.hasAttribute('data-image')) {
         let parent = img.closest('.image-upload')
         //Hide upload button, (shows on hover)
         parent.classList.add('hidden')
