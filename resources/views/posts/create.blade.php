@@ -10,7 +10,7 @@
             <p>{{ $errors->first() }}</p>
         </div>
         @endif
-        <form method="POST" action="{{ route('store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
 
             <!-- CSRF Token -->
             @csrf

@@ -13,7 +13,7 @@
                 </figure>
                 <div class="user-text">
                     <p class="is-size-3 has-text-white">{{ $post->user->name }}</p>
-                    <a class="is-size-6 has-text-info" href="{{  route('profile', ['id' => $post->user->id]) }}">{{
+                    <a class="is-size-6 has-text-info" href="{{  route('account.show', ['id' => $post->user->id]) }}">{{
                         '@'.$post->user->name }}</a>
                 </div>
             </div>

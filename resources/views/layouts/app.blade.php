@@ -38,7 +38,7 @@
                 <div class="navbar-start">
                     @if(Auth::check())
                     <div class="navbar-item">
-                        <a class="button is-info" href="{{ route('create') }}">
+                        <a class="button is-info" href="{{ route('posts.create') }}">
                             <i class="fas fa-camera-retro"></i>{{ __('Create') }}
                         </a>
                     </div>
