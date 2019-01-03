@@ -86,6 +86,16 @@ main {
     border-radius: 16px 16px 0px 0px;
 }
 
+.user-text {
+    p {
+        margin-bottom: -0.5rem;
+    }
+
+    a {
+        margin-top: -1rem;
+    }
+}
+
 .user-container {
     display: flex;
     justify-content: space-between;
@@ -126,7 +136,7 @@ main {
 }
 
 
-/* Bulma fixes */
+/* Bulma extentions */
 .is-transparent {
     background-color: transparent;
     background-image: none;
@@ -134,6 +144,10 @@ main {
 
 .is-justify-end {
     justify-content: flex-end;
+}
+
+.is-v-center {
+    align-items: center;
 }
 
 .h100 {

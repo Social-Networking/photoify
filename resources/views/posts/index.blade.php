@@ -13,13 +13,13 @@
             </div>
 
             <div class="card-userinfo">
-                <div class="is-flex">
+                <div class="is-flex is-v-center">
                     <figure class="image is-48x48">
                         <img class="is-rounded" src="{{ asset('images/'.$post->image) }}">
                     </figure>
-                    <div>
-                        <p class="title is-4 has-text-white">{{ $post->user->name }}</p>
-                        <p class="subtitle is-6 has-text-info">{{ '@'.$post->user->name }}</p>
+                    <div class="user-text">
+                        <p class="is-size-3 has-text-white">{{ $post->user->name }}</p>
+                        <a class="is-size-6 has-text-info" href="{{  route('profile', ['id' => $post->user->id]) }}">{{ '@'.$post->user->name }}</a>
                     </div>
                 </div>
 

@@ -12605,6 +12605,14 @@ main {
   border-radius: 16px 16px 0px 0px;
 }
 
+.user-text p {
+  margin-bottom: -0.5rem;
+}
+
+.user-text a {
+  margin-top: -1rem;
+}
+
 .user-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -12657,7 +12665,7 @@ main {
   opacity: 1;
 }
 
-/* Bulma fixes */
+/* Bulma extentions */
 
 .is-transparent {
   background-color: transparent;
@@ -12668,6 +12676,12 @@ main {
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
+}
+
+.is-v-center {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .h100 {
