@@ -4,6 +4,12 @@
 <div class="card has-background-dark">
     <div class="card-body is-transparent">
         <h1 class="is-size-2 is-size-4-touch has-text-white">My account</h1>
+                @if($errors->any())
+        <div class="notification is-warning">
+            <button class="delete"></button>
+            <p>{{ $errors->first() }}</p>
+        </div>
+        @endif
         <form method="POST" action="{{ route('account.update') }}" enctype="multipart/form-data">
 
             <!-- CSRF Token -->
@@ -34,7 +40,7 @@
                         <label class="label has-text-white">{{ __('Display name') }}</label>
                         <div class="control">
                             <input class="input" type="text" name="display_name" value="{{ isset($user->display_name) ? $user->display_name : '' }}"
-                                required autofocus>
+                                autofocus>
                         </div>
                     </div>
 
@@ -43,7 +49,7 @@
                         <label class="label has-text-white">{{ __('E-Mail Address') }}</label>
                         <div class="control">
                             <input class="input" type="email" name="email" placeholder="john.doe@example.com" value="{{ $user->email }}"
-                                required autofocus>
+                                required>
                         </div>
                     </div>
 
