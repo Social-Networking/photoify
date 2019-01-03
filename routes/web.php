@@ -27,5 +27,11 @@ Route::patch('/posts/{post}', 'PostsController@update')->name('update');
 Route::delete('/posts/{post}', 'PostsController@destroy')->name('destroy');
 
 //Users
-Route::get('/account', 'UsersController@index')->name('account');
+
+//When logged in: Redirect /account to current users profile, /user/1 etc.
+Route::get('/account', function () {
+    return redirect()->route('profile', ['id' => Auth::id()]);
+});
+
+Route::get('/account/settings', 'UsersController@settings')->name('account');
 Route::get('/user/{user}', 'UsersController@show')->name('profile');
