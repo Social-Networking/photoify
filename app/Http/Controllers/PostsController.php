@@ -31,6 +31,8 @@ class PostsController extends Controller
 
     /**
      * Display listings posted by followed users.
+     *
+     * @return \Illuminate\Http\Response
      */
     public function following()
     {
