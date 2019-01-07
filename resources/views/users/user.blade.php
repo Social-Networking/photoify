@@ -17,8 +17,8 @@
             </div>
         </div>
         <div class="is-flex">
-            @if(!$user->id === Auth::id())
-            <form method="POST" action="{{ route('account.follow', ['id'=>$user->id]) }}">
+            @if($user->id !== Auth::id())
+            <form method="POST" action="{{ route('account.follow', ['id'=>$user->id]) }}" class="w100">
                 @csrf
                 @if(!$followed)
                 <input type="submit" class="button is-link is-outlined is-fullwidth" value="{{ __('Follow') }}">

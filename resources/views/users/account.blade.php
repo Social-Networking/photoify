@@ -3,7 +3,7 @@
 @section('content')
 <div class="card has-background-dark">
     <div class="card-body is-transparent">
-        <h1 class="is-size-2 is-size-4-touch has-text-white">My account</h1>
+        <h1 class="is-size-2 is-size-4-touch has-text-white">{{ __('My Account') }}</h1>
                 @if($errors->any())
         <div class="notification is-warning">
             <button class="delete"></button>

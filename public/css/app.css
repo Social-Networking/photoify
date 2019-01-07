@@ -12775,6 +12775,12 @@ main {
           justify-content: flex-end;
 }
 
+.is-justify-center {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
 .is-v-center {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -12783,5 +12789,13 @@ main {
 
 .h100 {
   height: 100%;
+}
+
+.w100 {
+  width: 100%;
+}
+
+.mb {
+  margin-bottom: 1rem;
 }
 
