@@ -30,6 +30,19 @@ class PostsController extends Controller
     }
 
     /**
+     * Display listings posted by followed users.
+     */
+    public function following()
+    {
+        //SELECT * FROM posts WHERE user_id IN (SELECT user_2 FROM follows WHERE user_1 = Auth::id())
+        return view('posts.index', [
+            'posts' => Post::whereIn('user_id', function ($query) {
+                return $query->select('user_2')->from('follows')->where('user_1', Auth::id());
+            })->orderBy('id', 'desc')->take('20')->get(),
+        ]);
+    }
+
+    /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
