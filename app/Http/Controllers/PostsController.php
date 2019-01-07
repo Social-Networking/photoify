@@ -141,6 +141,11 @@ class PostsController extends Controller
         return redirect('posts/');
     }
 
+    /**
+     * Like a listing of the resource.
+     *
+     * @param int $id
+     */
     public function like($id)
     {
         $record = Like::where([

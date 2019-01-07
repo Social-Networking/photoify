@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
+    /**
+     * Display user settings form.
+     */
     public function settings()
     {
         return view('users.account', [
@@ -16,6 +19,11 @@ class UsersController extends Controller
         ]);
     }
 
+    /**
+     * Display specific user.
+     *
+     * @param int $id
+     */
     public function show($id)
     {
         return view('users.user', [
@@ -27,6 +35,11 @@ class UsersController extends Controller
         ]);
     }
 
+    /**
+     * Update user settings.
+     *
+     * @param Request $request
+     */
     public function update(Request $request)
     {
         $user = User::find(Auth::id());
@@ -57,6 +70,11 @@ class UsersController extends Controller
         return redirect('user/'.Auth::id());
     }
 
+    /**
+     * Follow specified user.
+     *
+     * @param int $id
+     */
     public function follow($id)
     {
         $record = Follow::where([
