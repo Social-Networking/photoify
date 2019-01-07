@@ -22,7 +22,8 @@ main {
 
 //Like button
 .like {
-
+    background-color: transparent;
+    border: none;
     color: #414141;
 
     svg {
@@ -33,6 +34,14 @@ main {
     :hover {
         color: rgb(255, 0, 0);
     }
+
+    :active {
+        outline: none;
+    }
+}
+
+.like.liked {
+    color: rgb(255, 0, 0);
 }
 
 /* NAV */

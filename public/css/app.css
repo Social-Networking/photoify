@@ -12521,6 +12521,8 @@ main {
 }
 
 .like {
+  background-color: transparent;
+  border: none;
   color: #414141;
 }
 
@@ -12530,6 +12532,14 @@ main {
 }
 
 .like :hover {
+  color: red;
+}
+
+.like :active {
+  outline: none;
+}
+
+.like.liked {
   color: red;
 }
 
