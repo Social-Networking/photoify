@@ -44,6 +44,9 @@
                     </div>
                     @endif
                     <a class="navbar-item" href="{{ route('posts') }}">
+                        <i class="far fa-newspaper"></i>{{ __('New') }}
+                    </a>
+                    <a class="navbar-item" href="{{ route('posts.following') }}">
                         <i class="fas fa-user-friends"></i>{{ __('Following') }}
                     </a>
                     <a class="navbar-item" href="{{ route('posts') }}">
