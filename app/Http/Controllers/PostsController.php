@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\Like;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -138,5 +139,28 @@ class PostsController extends Controller
         }
 
         return redirect('posts/');
+    }
+
+    public function like($id)
+    {
+        $record = Like::where([
+            ['user_id', Auth::id()],
+            ['post_id', $id],
+        ]);
+
+        //If our record doesn't exist we create it
+        if (null === $record->first()) {
+            $like = new Like();
+
+            $like->user_id = Auth::id();
+            $like->post_id = $id;
+            $like->save();
+
+        //If it exists we delete it
+        } else {
+            $record->delete();
+        }
+
+        return response()->json(null, 200);
     }
 }

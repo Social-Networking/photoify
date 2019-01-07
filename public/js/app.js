@@ -946,6 +946,9 @@ module.exports = __webpack_require__(39);
 
 __webpack_require__(11);
 
+//CSRF token
+var csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
 //Human readable dates
 window.timeago.render(document.querySelectorAll('time'));
 
@@ -1006,6 +1009,28 @@ burgerToggle.addEventListener('click', function (event) {
 
     event.target.classList.toggle('is-active');
     target.classList.toggle('is-active');
+});
+
+//Like posts with axios
+var likeButtons = document.querySelectorAll('.like');
+
+likeButtons.forEach(function (button) {
+    button.addEventListener('click', function () {
+        button.classList.toggle('liked');
+
+        var path = button.dataset.path;
+
+        fetch(path, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'post',
+            credentials: 'same-origin',
+            body: JSON.stringify({
+                '_token': csrf
+            })
+        });
+    });
 });
 
 /***/ }),

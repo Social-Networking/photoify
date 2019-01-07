@@ -6,6 +6,9 @@
 
 require('./bootstrap')
 
+//CSRF token
+const csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+
 //Human readable dates
 window.timeago.render(document.querySelectorAll('time'))
 
@@ -29,10 +32,7 @@ imgContainer.forEach(function (img) {
         //Hide upload button, (shows on hover)
         parent.classList.add('hidden')
 
-        parent.setAttribute(
-            'style',
-            `background-image: url(${img.dataset.image});`,
-        )
+        parent.setAttribute('style', `background-image: url(${img.dataset.image});`)
     }
 
     //Eventlistener for previewing imag
@@ -54,13 +54,8 @@ imgContainer.forEach(function (img) {
                 parent.classList.add('hidden')
 
                 //Set uploaded file as background on
-                parent.setAttribute(
-                    'style',
-                    `background-image: url(${reader.result});`,
-                )
-            },
-            false,
-        )
+                parent.setAttribute('style', `background-image: url(${reader.result});`)
+            }, false)
 
         if (file) {
             reader.readAsDataURL(file)
@@ -76,4 +71,26 @@ burgerToggle.addEventListener('click', event => {
 
     event.target.classList.toggle('is-active')
     target.classList.toggle('is-active')
+})
+
+//Like posts with axios
+const likeButtons = document.querySelectorAll('.like')
+
+likeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        button.classList.toggle('liked')
+
+        const path = button.dataset.path
+
+        fetch(path, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            method: 'post',
+            credentials: 'same-origin',
+            body: JSON.stringify({
+                '_token': csrf
+            })
+        })
+    })
 })
