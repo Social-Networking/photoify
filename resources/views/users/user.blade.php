@@ -18,7 +18,7 @@
             <div class="user-end">
                 <form method="POST" action="{{ route('account.follow', ['id'=>$user->id]) }}">
                     @csrf
-                        @if($followed)
+                        @if(!$followed)
                             <input type="submit" class="button is-link is-outlined" value="Follow">
                         @else
                             <input type="submit" class="button is-danger is-outlined" value="Unfollow">
