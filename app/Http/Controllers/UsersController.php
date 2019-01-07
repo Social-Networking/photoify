@@ -46,7 +46,8 @@ class UsersController extends Controller
 
         $request->validate([
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'display_name' => 'string|max:32',
+            'display_name' => 'nullable|string|max:32',
+            'biography' => 'nullable|string|max:255',
             'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:6',
             //'new_password' => 'string|min:6|different:password',
@@ -63,6 +64,7 @@ class UsersController extends Controller
 
         //Update rest if set.
         strlen($request->display_name) > 0 ? $user->display_name = $request->display_name : '';
+        strlen($request->biography) > 0 ? $user->biography = $request->biography : '';
         strlen($request->new_password) > 0 ? $user->password = Hash::make($request->new_password) : '';
 
         $user->save();

@@ -44,6 +44,13 @@
                         </div>
                     </div>
 
+                    <div class="field">
+                        <label class="label has-text-white">{{ __('Biography') }}</label>
+                        <div class="control">
+                            <textarea class="textarea has-fixed-size" name="biography">{{ isset($user->biography) ? $user->biography : '' }}</textarea>
+                        </div>
+                    </div>
+
                     <!-- Email Input -->
                     <div class="field">
                         <label class="label has-text-white">{{ __('E-Mail Address') }}</label>
