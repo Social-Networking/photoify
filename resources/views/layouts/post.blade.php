@@ -17,8 +17,7 @@
                         '@'.$post->user->name }}</a>
                 </div>
             </div>
-
-            <a class="like"><i class="fas fa-heart"></i></a>
+                <button data-path="{{ route('posts.like', ['id'=>$post->id]) }}" class="like"><i class="fas fa-heart"></i></button>
         </div>
 
         <div class="card-content">
