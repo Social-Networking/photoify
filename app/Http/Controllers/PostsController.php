@@ -20,28 +20,65 @@ class PostsController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param Request $request
+     *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('posts.index', [
-            'posts' => Post::orderBy('id', 'desc')->take('20')->get(),
+        //Ammount to fetch
+        $count = 20;
+
+        $request->validate([
+            'page' => 'nullable|numeric',
         ]);
+
+        $page = $request->query('page', 0);
+
+        //Posts
+        $posts = Post::orderBy('id', 'desc')->skip($count * $page)->take($count)->get();
+
+        //If json param exists, return json
+        if ($request->has('json')) {
+            return response()->json($posts);
+        } else {
+            return view('posts.index', [
+                'posts' => $posts,
+            ]);
+        }
     }
 
     /**
      * Display listings posted by followed users.
      *
+     * @param Request $request
+     *
      * @return \Illuminate\Http\Response
      */
-    public function following()
+    public function following(Request $request)
     {
-        //SELECT * FROM posts WHERE user_id IN (SELECT user_2 FROM follows WHERE user_1 = Auth::id())
-        return view('posts.index', [
-            'posts' => Post::whereIn('user_id', function ($query) {
-                return $query->select('user_2')->from('follows')->where('user_1', Auth::id());
-            })->orderBy('id', 'desc')->take('20')->get(),
+        //Ammount to fetch
+        $count = 20;
+
+        $request->validate([
+            'page' => 'nullable|numeric',
         ]);
+
+        $page = $request->query('page', 0);
+
+        //Posts
+        $posts = Post::whereIn('user_id', function ($query) {
+            return $query->select('user_2')->from('follows')->where('user_1', Auth::id());
+        })->orderBy('id', 'desc')->skip($count * $page)->take($count)->get();
+
+        //If json param exists, return json
+        if ($request->has('json')) {
+            return response()->json($posts);
+        } else {
+            return view('posts.index', [
+                        'posts' => $posts,
+                    ]);
+        }
     }
 
     /**
