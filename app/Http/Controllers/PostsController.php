@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Post;
 use App\Like;
-use Illuminate\Http\Request;
+use Request;
 use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
@@ -24,22 +24,22 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index()
     {
         //Ammount to fetch
         $count = 20;
 
-        $request->validate([
+        Request::validate([
             'page' => 'nullable|numeric',
         ]);
 
-        $page = $request->query('page', 0);
+        $page = Request::query('page', 0);
 
         //Posts
         $posts = Post::orderBy('id', 'desc')->skip($count * $page)->take($count)->get();
 
         //If json param exists, return json
-        if ($request->has('json')) {
+        if (Request::wantsJson()) {
             return response()->json($posts);
         } else {
             return view('posts.index', [
@@ -55,29 +55,28 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function following(Request $request)
+    public function following()
     {
         //Ammount to fetch
         $count = 20;
 
-        $request->validate([
+        Request::validate([
             'page' => 'nullable|numeric',
         ]);
 
-        $page = $request->query('page', 0);
+        $page = Request::query('page', 0);
 
         //Posts
         $posts = Post::whereIn('user_id', function ($query) {
             return $query->select('user_2')->from('follows')->where('user_1', Auth::id());
         })->orderBy('id', 'desc')->skip($count * $page)->take($count)->get();
 
-        //If json param exists, return json
-        if ($request->has('json')) {
+        if (Request::wantsJson()) {
             return response()->json($posts);
         } else {
             return view('posts.index', [
-                        'posts' => $posts,
-                    ]);
+                'posts' => $posts,
+            ]);
         }
     }
 
