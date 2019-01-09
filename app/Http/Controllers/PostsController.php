@@ -38,14 +38,9 @@ class PostsController extends Controller
         //Posts
         $posts = Post::orderBy('id', 'desc')->skip($count * $page)->take($count)->get();
 
-        //If json param exists, return json
-        if (Request::wantsJson()) {
-            return response()->json($posts);
-        } else {
-            return view('posts.index', [
-                'posts' => $posts,
-            ]);
-        }
+        return view('posts.index', [
+            'posts' => $posts,
+        ]);
     }
 
     /**
@@ -71,13 +66,9 @@ class PostsController extends Controller
             return $query->select('user_2')->from('follows')->where('user_1', Auth::id());
         })->orderBy('id', 'desc')->skip($count * $page)->take($count)->get();
 
-        if (Request::wantsJson()) {
-            return response()->json($posts);
-        } else {
-            return view('posts.index', [
-                'posts' => $posts,
-            ]);
-        }
+        return view('posts.index', [
+            'posts' => $posts,
+        ]);
     }
 
     /**
