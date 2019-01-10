@@ -1,54 +1,85 @@
 .card-container {
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
 .card {
+    height: 95vh;
     max-width: 90vw;
     width: 30rem;
     border-radius: 16px;
-    margin: 0 3rem 3rem;
+    margin: 0 auto 3rem;
+
+    @media screen and (min-width: 1200px) {
+        margin: 0 3rem 3rem;
+    }
 
     .card-body {
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
         padding: 1.5rem;
         height: 100%;
         border-radius: 16px;
 
-        .card-userinfo {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 1.5rem 0.5rem;
-
-            figure {
-                margin-right: 10px;
-            }
-        }
-
         .card-content {
-            padding-top: 0.5rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
 
-            .card-timebox {
+            .card-userinfo {
                 display: flex;
-                justify-content: flex-end;
+                align-items: center;
+
+                figure {
+                    margin-right: 10px;
+                }
+
+                @media screen and (max-width: 410px) {
+                    figure {
+                        display: none;
+                    }
+                }
+            }
+
+            .lead {
+                height: 100%;
+                padding: 1rem 0;
+            }
+
+            .card-footer {
+                align-items: center;
+                justify-content: space-between;
+                border: 0;
                 width: 100%;
             }
         }
-
     }
 }
 
-.card-image img {
-    border-radius: 16px 16px 0px 0px;
+.card-image {
+    figure {
+        display: flex;
+        justify-content: flex-end;
+        height: 0;
+
+        &:before {
+            content: "";
+            padding-top: 100%;
+        }
+
+        img {
+            border-radius: 16px 16px 0px 0px;
+        }
+    }
 }
 
 .user-text {
     p {
         line-height: 2rem;
+        white-space: nowrap;
     }
 
     a {

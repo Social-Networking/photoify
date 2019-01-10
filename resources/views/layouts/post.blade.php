@@ -6,8 +6,8 @@
             </figure>
         </div>
 
-        <div class="card-userinfo">
-            <div class="is-flex is-v-center">
+        <div class="card-content">
+            <div class="card-userinfo">
                 <figure class="image is-48x48">
                     <img class="is-rounded" src="{{ asset('images/'.$post->user->image) }}">
                 </figure>
@@ -17,12 +17,12 @@
                         '@'.$post->user->name }}</a>
                 </div>
             </div>
-                <button data-path="{{ route('posts.like', ['id'=>$post->id]) }}" class="like"><i class="fas fa-heart"></i></button>
-        </div>
-
-        <div class="card-content">
             <p class="lead is-size-4 has-text-white">{{ $post->description }}</p>
-            <div class="card-timebox"><time class="has-text-grey-light" datetime="{{ $post->created_at }}"></time></div>
+            <div class="card-footer">
+                <button data-path="{{ route('posts.like', ['id'=>$post->id]) }}" class="like {{ $post->liked ? "liked" : ""}}">
+                    <i class="fas fa-heart"></i>
+                </button>
+                <time class="has-text-grey-light" datetime="{{ $post->created_at }}"></time></div>
         </div>
     </div>
 </div>

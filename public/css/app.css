@@ -12494,6 +12494,7 @@ label.panel-block:hover {
 }
 
 .card-container {
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -12505,10 +12506,17 @@ label.panel-block:hover {
 }
 
 .card {
+  height: 95vh;
   max-width: 90vw;
   width: 30rem;
   border-radius: 16px;
-  margin: 0 3rem 3rem;
+  margin: 0 auto 3rem;
+}
+
+@media screen and (min-width: 1200px) {
+  .card {
+    margin: 0 3rem 3rem;
+  }
 }
 
 .card .card-body {
@@ -12519,51 +12527,82 @@ label.panel-block:hover {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   padding: 1.5rem;
   height: 100%;
   border-radius: 16px;
 }
 
-.card .card-body .card-userinfo {
+.card .card-body .card-content {
+  height: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+}
+
+.card .card-body .card-content .card-userinfo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding: 1.5rem 1.5rem 0.5rem;
 }
 
-.card .card-body .card-userinfo figure {
+.card .card-body .card-content .card-userinfo figure {
   margin-right: 10px;
 }
 
-.card .card-body .card-content {
-  padding-top: 0.5rem;
+@media screen and (max-width: 410px) {
+  .card .card-body .card-content .card-userinfo figure {
+    display: none;
+  }
 }
 
-.card .card-body .card-content .card-timebox {
+.card .card-body .card-content .lead {
+  height: 100%;
+  padding: 1rem 0;
+}
+
+.card .card-body .card-content .card-footer {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  border: 0;
+  width: 100%;
+}
+
+.card-image figure {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: end;
       -ms-flex-pack: end;
           justify-content: flex-end;
-  width: 100%;
+  height: 0;
 }
 
-.card-image img {
+.card-image figure:before {
+  content: "";
+  padding-top: 100%;
+}
+
+.card-image figure img {
   border-radius: 16px 16px 0px 0px;
 }
 
 .user-text p {
   line-height: 2rem;
+  white-space: nowrap;
 }
 
 .user-text a {
