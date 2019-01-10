@@ -21,17 +21,20 @@ Auth::routes();
 Route::get('/posts', 'PostsController@index')->name('posts');
 Route::get('/posts/following', 'PostsController@following')->name('posts.following');
 Route::get('/posts/create', 'PostsController@create')->name('posts.create');
-Route::put('/posts', 'PostsController@store')->name('posts.store');
+Route::get('/posts/liked', 'PostsController@liked')->name('posts.liked');
 Route::get('/posts/{post}', 'PostsController@show')->name('posts.show');
-Route::post('/posts/{post}', 'PostsController@like')->name('posts.like');
 Route::get('/posts/{post}/edit', 'PostsController@edit')->name('posts.edit');
+
+Route::put('/posts', 'PostsController@store')->name('posts.store');
+Route::post('/posts/{post}', 'PostsController@like')->name('posts.like');
 Route::patch('/posts/{post}', 'PostsController@update')->name('posts.update');
 Route::delete('/posts/{post}', 'PostsController@destroy')->name('posts.destroy');
 
 //Users
 Route::get('/account/settings', 'UsersController@settings')->name('account');
-Route::patch('/account/settings', 'UsersController@update')->name('account.update');
 Route::get('/user/{user}', 'UsersController@show')->name('account.show');
+
+Route::patch('/account/settings', 'UsersController@update')->name('account.update');
 Route::post('/user/{user}', 'UsersController@follow')->name('account.follow');
 
 //When logged in: Redirect /account to current users profile, /user/1 etc.

@@ -44,6 +44,38 @@ class PostsController extends Controller
     }
 
     /**
+     * Display liked posts.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function liked()
+    {
+        //Ammount to fetch
+        $count = 20;
+
+        Request::validate([
+            'page' => 'nullable|numeric',
+        ]);
+
+        $page = Request::query('page', 0);
+
+        //Posts
+        $posts = Post::orderBy('id', 'desc')
+            ->select('posts.*', 'likes.user_id as liked')
+            ->skip($count * $page)
+            ->take($count)
+            ->join('likes', function ($join) {
+                $join->on('posts.id', '=', 'likes.post_id')
+                        ->where('likes.user_id', Auth::id());
+            })
+            ->get();
+
+        return view('posts.index', [
+            'posts' => $posts,
+        ]);
+    }
+
+    /**
      * Display listings posted by followed users.
      *
      * @param Request $request

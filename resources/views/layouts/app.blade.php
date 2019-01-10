@@ -49,8 +49,8 @@
                     <a class="navbar-item" href="{{ route('posts.following') }}">
                         <i class="fas fa-user-friends"></i>{{ __('Following') }}
                     </a>
-                    <a class="navbar-item" href="{{ route('posts') }}">
-                        <i class="fas fa-chart-line"></i>{{ __('Trending') }}
+                    <a class="navbar-item" href="{{ route('posts.liked') }}">
+                        <i class="fas fa-heart"></i>{{ __('Liked') }}
                     </a>
 
                 </div>
