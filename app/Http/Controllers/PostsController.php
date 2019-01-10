@@ -36,7 +36,12 @@ class PostsController extends Controller
         $page = Request::query('page', 0);
 
         //Posts
-        $posts = Post::orderBy('id', 'desc')->skip($count * $page)->take($count)->get();
+        $posts = Post::select('posts.*', 'likes.user_id as liked')
+            ->leftJoin('likes', 'posts.id', 'likes.post_id')
+            ->orderBy('id', 'desc')
+            ->skip($count * $page)
+            ->take($count)
+            ->get();
 
         return view('posts.index', [
             'posts' => $posts,
@@ -94,9 +99,14 @@ class PostsController extends Controller
         $page = Request::query('page', 0);
 
         //Posts
-        $posts = Post::whereIn('user_id', function ($query) {
-            return $query->select('user_2')->from('follows')->where('user_1', Auth::id());
-        })->orderBy('id', 'desc')->skip($count * $page)->take($count)->get();
+        $posts = Post::select('posts.*', 'likes.user_id as liked')
+            ->whereIn('posts.user_id', function ($query) {
+                return $query->select('user_2')
+                ->from('follows')
+                ->where('user_1', Auth::id());
+            })
+            ->leftJoin('likes', 'posts.id', 'likes.post_id')
+            ->orderBy('id', 'desc')->skip($count * $page)->take($count)->get();
 
         return view('posts.index', [
             'posts' => $posts,
