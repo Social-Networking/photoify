@@ -2,19 +2,13 @@
     background-color: transparent;
     border: none;
     color: #414141;
+    outline: none;
 
     svg {
         width: 2rem !important;
         height: 2rem !important;
     }
 
-    :hover {
-        color: rgb(255, 0, 0);
-    }
-
-    :active {
-        outline: none;
-    }
 }
 
 .like.liked {
