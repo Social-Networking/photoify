@@ -1,0 +1,22 @@
+.like {
+    background-color: transparent;
+    border: none;
+    color: #414141;
+
+    svg {
+        width: 2rem !important;
+        height: 2rem !important;
+    }
+
+    :hover {
+        color: rgb(255, 0, 0);
+    }
+
+    :active {
+        outline: none;
+    }
+}
+
+.like.liked {
+    color: rgb(255, 0, 0);
+}

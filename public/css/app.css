@@ -12493,86 +12493,6 @@ label.panel-block:hover {
   padding: 3rem 1.5rem 6rem;
 }
 
-* {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-}
-
-body {
-  background: url("https://images.unsplash.com/photo-1504662880849-32592cd4884e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80");
-}
-
-main {
-  margin-top: 2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-}
-
-#app {
-  min-height: 100vh;
-}
-
-.like {
-  background-color: transparent;
-  border: none;
-  color: #414141;
-}
-
-.like svg {
-  width: 2rem !important;
-  height: 2rem !important;
-}
-
-.like :hover {
-  color: red;
-}
-
-.like :active {
-  outline: none;
-}
-
-.like.liked {
-  color: red;
-}
-
-/* NAV */
-
-.navbar-item svg {
-  margin-right: 5px;
-}
-
-.navbar-brand {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: absolute;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  width: 100%;
-}
-
-.navbar-brand svg {
-  width: 5rem;
-  height: 100%;
-}
-
-@media screen and (max-width: 1087px) {
-  .navbar-menu.is-active .navbar-start {
-    margin-top: 2.5rem;
-  }
-}
-
-/* CARD */
-
 .card-container {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -12642,6 +12562,87 @@ main {
   border-radius: 16px 16px 0px 0px;
 }
 
+.image-upload {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 15rem;
+  margin-bottom: 1rem;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.image-upload.hidden > * {
+  opacity: 0;
+}
+
+.image-upload:hover > * {
+  -webkit-transition: opacity 0.3s ease-in;
+  transition: opacity 0.3s ease-in;
+  opacity: 1;
+}
+
+.image-upload.profile-image {
+  -webkit-clip-path: circle();
+          clip-path: circle();
+}
+
+.like {
+  background-color: transparent;
+  border: none;
+  color: #414141;
+}
+
+.like svg {
+  width: 2rem !important;
+  height: 2rem !important;
+}
+
+.like :hover {
+  color: red;
+}
+
+.like :active {
+  outline: none;
+}
+
+.like.liked {
+  color: red;
+}
+
+.navbar-item svg {
+  margin-right: 5px;
+}
+
+.navbar-brand {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: absolute;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  width: 100%;
+}
+
+.navbar-brand svg {
+  width: 5rem;
+  height: 100%;
+}
+
+@media screen and (max-width: 1087px) {
+  .navbar-menu.is-active .navbar-start {
+    margin-top: 2.5rem;
+  }
+}
+
 .user-text p {
   margin-bottom: -0.5rem;
 }
@@ -12678,38 +12679,6 @@ main {
 
 .user-container div {
   height: 100%;
-}
-
-.image-upload {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  height: 15rem;
-  margin-bottom: 1rem;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-
-.image-upload.hidden > * {
-  opacity: 0;
-}
-
-.image-upload:hover > * {
-  -webkit-transition: opacity 0.3s ease-in;
-  transition: opacity 0.3s ease-in;
-  opacity: 1;
-}
-
-.image-upload.profile-image {
-  -webkit-clip-path: circle();
-          clip-path: circle();
 }
 
 .profile-settings {
@@ -12762,40 +12731,141 @@ main {
   }
 }
 
-/* Bulma extentions */
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
 
-.is-transparent {
+body {
+  background: url("https://images.unsplash.com/photo-1504662880849-32592cd4884e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80");
+}
+
+main {
+  margin-top: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+#app {
+  min-height: 100vh;
+}
+
+.like {
   background-color: transparent;
-  background-image: none;
+  border: none;
+  color: #414141;
 }
 
-.is-justify-end {
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+.like svg {
+  width: 2rem !important;
+  height: 2rem !important;
 }
 
-.is-justify-center {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+.like :hover {
+  color: red;
 }
 
-.is-v-center {
+.like :active {
+  outline: none;
+}
+
+.like.liked {
+  color: red;
+}
+
+.user-text p {
+  margin-bottom: -0.5rem;
+}
+
+.user-text a {
+  margin-top: -1rem;
+}
+
+.user-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-top: -2rem;
+  margin-bottom: 30px;
+  padding: 1.5rem 1.5rem;
+  width: 100%;
+  background: white;
+}
+
+.user-container .user-start {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-.h100 {
+.user-container .user-start figure {
+  margin-right: 1rem;
+}
+
+.user-container div {
   height: 100%;
 }
 
-.w100 {
+.profile-settings {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin-top: 1rem;
+}
+
+.profile-settings .profile-inputs {
   width: 100%;
 }
 
-.mb {
-  margin-bottom: 1rem;
+.profile-settings .file-icon {
+  margin: 0px;
+}
+
+@media screen and (min-width: 520px) {
+  .profile-settings {
+    -webkit-box-align: normal;
+        -ms-flex-align: normal;
+            align-items: normal;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    margin-top: 2rem;
+  }
+
+  .profile-settings .profile-inputs {
+    margin-left: 2rem;
+  }
+
+  .profile-settings .file-cta {
+    padding: 2rem 2rem !important;
+  }
+
+  .profile-image {
+    height: 100%;
+  }
 }
 
