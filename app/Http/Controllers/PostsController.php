@@ -116,20 +116,20 @@ class PostsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request
      *
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        $request->validate([
+        Request::validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'description' => 'required|max:255',
         ]);
 
-        $imageName = time().'.'.$request->image->getClientOriginalExtension();
+        $imageName = time().'.'.request()->image->getClientOriginalExtension();
 
-        $request->image->move(public_path('images'), $imageName);
+        request()->image->move(public_path('images'), $imageName);
 
         $post = new Post();
 
@@ -178,17 +178,17 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update($id)
     {
         $post = Post::find($id);
 
         //Only save if currently logged in users id matches orginal posters user id (Might not be needed)
         if ($post->id === Auth::id()) {
-            $request->validate([
+            Request::validate([
                 'description' => 'required|max:255',
             ]);
 
-            $post->description = $request->description;
+            $post->description = request()->description;
 
             $post->save();
         }
