@@ -12544,6 +12544,7 @@ label.panel-block:hover {
   -webkit-box-pack: justify;
       -ms-flex-pack: justify;
           justify-content: space-between;
+  overflow: hidden;
 }
 
 .card .card-body .card-content .card-userinfo {
@@ -12645,19 +12646,12 @@ label.panel-block:hover {
   background-color: transparent;
   border: none;
   color: #414141;
+  outline: none;
 }
 
 .like svg {
   width: 2rem !important;
   height: 2rem !important;
-}
-
-.like :hover {
-  color: red;
-}
-
-.like :active {
-  outline: none;
 }
 
 .like.liked {
