@@ -1,47 +1,38 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+<div class="card has-background-dark h100">
+    <div class="card-body is-transparent">
+        <h1 class="is-size-2 is-size-4-touch has-text-white">{{ __('Reset Password') }}</h1>
+        @if($errors->any())
+        <div class="notification is-warning">
+            <button class="delete"></button>
+            <p>{{ $errors->first() }}</p>
+        </div>
+        @endif
+        <form method="POST" action="{{ route('password.email') }}">
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+            <!-- CSRF Token -->
+            @csrf
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required>
-
-                                @if ($errors->has('email'))
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+            <!-- Email Input -->
+            <div class="field">
+                <label class="label has-text-white">{{ __('E-Mail Address') }}</label>
+                <div class="control">
+                    <input class="input" type="email" name="email" value="{{ old('email') }}"
+                        required autofocus>
                 </div>
             </div>
-        </div>
+
+            <!-- Submit button -->
+            <div class="field">
+                <div class="control">
+                    <button type="submit" class="button is-primary is-fullwidth is-large">
+                        {{ __('Send Email') }}
+                    </button>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 @endsection

@@ -3,7 +3,7 @@
 @section('content')
 <div class="card has-background-dark h100">
     <div class="card-body is-transparent">
-        <h1 class="is-size-2 is-size-4-touch has-text-white">Photoify</h1>
+        <h1 class="is-size-2 is-size-4-touch has-text-white">{{ __('Login') }}</h1>
         @if($errors->any())
         <div class="notification is-warning">
             <button class="delete"></button>
@@ -63,8 +63,12 @@
             </div>
 
             <!-- Register link -->
-            <p> Need an account?<a class="has-text-primary has-text-right" href="{{ route('register') }}">
+            <p> {{ __('Need an account') }}?<a class="has-text-primary has-text-right" href="{{ route('register') }}">
                     {{ __('Register') }}
+                </a></p>
+                            <!-- Register link -->
+            <p> {{ __('Forgot your password?') }}<a class="has-text-primary has-text-right" href="{{ route('password.update') }}">
+                    {{ __('Reset') }}
                 </a></p>
         </form>
     </div>
