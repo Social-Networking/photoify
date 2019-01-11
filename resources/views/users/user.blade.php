@@ -32,14 +32,17 @@
         </form>
         @else
         <a href="{{ route('account') }}" class="button is-dark is-outlined is-fullwidth"><span class="icon"><i class="fas fa-cog"></i></span><span>{{
-            __('Settings') }}</span></a>
+                __('Settings') }}</span></a>
         @endif
     </div>
 </div>
-
 <div class="card-container">
-    @foreach($user->posts as $post)
-    @include('layouts.post', $post)
-    @endforeach
+    @if(count($user->posts) > 0)
+        @foreach($user->posts as $post)
+            @include('layouts.post', $post)
+        @endforeach
+    @else
+        @include('posts.empty')
+    @endif
 </div>
 @endsection
