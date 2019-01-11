@@ -31,8 +31,8 @@
             @endif
         </form>
         @else
-        <a href="{{ route('account') }}" class="button is-dark is-outlined is-fullwidth"><i class="fas fa-cog"></i>{{
-            __('Settings') }}</a>
+        <a href="{{ route('account') }}" class="button is-dark is-outlined is-fullwidth"><span class="icon"><i class="fas fa-cog"></i></span><span>{{
+            __('Settings') }}</span></a>
         @endif
     </div>
 </div>
