@@ -17,7 +17,7 @@
                         '@'.$post->user->name }}</a>
                 </div>
             </div>
-            <p class="lead is-size-4 has-text-white">{{ $post->description }}</p>
+            <p class="lead is-size-5 has-text-white">{{ $post->description }}</p>
             <div class="card-footer">
                 <button data-path="{{ route('posts.like', ['id'=>$post->id]) }}" class="like {{ $post->liked ? "liked" : ""}}">
                     <i class="fas fa-heart"></i>

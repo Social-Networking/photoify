@@ -47,7 +47,7 @@ class UsersController extends Controller
         $request->validate([
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'display_name' => 'nullable|string|max:32',
-            'biography' => 'nullable|string|max:255',
+            'biography' => 'nullable|string|max:128',
             'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:6',
             //'new_password' => 'string|min:6|different:password',

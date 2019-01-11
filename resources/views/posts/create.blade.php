@@ -41,7 +41,7 @@
             <div class="field">
                 <label class="label has-text-white">{{ __('Description') }}</label>
                 <div class="control">
-                    <textarea name="description" class="textarea" placeholder="e.g. Hello world" required autofocus></textarea>
+                    <textarea name="description" class="textarea" placeholder="e.g. Hello world" maxlength="128" required autofocus></textarea>
                 </div>
             </div>
 

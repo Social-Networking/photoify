@@ -134,7 +134,7 @@ class PostsController extends Controller
     {
         Request::validate([
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'description' => 'required|max:255',
+            'description' => 'required|max:128',
         ]);
 
         $imageName = time().'.'.request()->image->getClientOriginalExtension();
