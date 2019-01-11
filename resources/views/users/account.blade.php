@@ -69,7 +69,10 @@
                     </div>
 
                     <!-- New Password Input -->
-                    <div class="field is-hidden">
+                    <a class="has-text-primary mb" onclick="this.classList.add('is-hidden'); document.querySelector('#new-pass').classList.remove('is-hidden')">
+                        {{ __('Change password?') }}
+                    </a>
+                    <div id="new-pass" class="field is-hidden">
                         <label class="label has-text-white">{{ __('New Password') }}</label>
                         <div class="control">
                             <input class="input" type="password" name="new_password">
