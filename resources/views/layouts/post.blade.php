@@ -1,4 +1,4 @@
-<div class="card has-background-dark">
+<div class="card post has-background-dark">
     <div class="card-body is-transparent" style="padding: 0px;">
         <div class="card-image">
             <figure class="image is-square">

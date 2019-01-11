@@ -6,7 +6,6 @@
 }
 
 .card {
-    height: 95vh;
     max-width: 90vw;
     width: 30rem;
     border-radius: 16px;
@@ -58,6 +57,10 @@
             }
         }
     }
+}
+
+.card.post {
+    height: 95vh;
 }
 
 .card-image {
