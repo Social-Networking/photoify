@@ -2,8 +2,12 @@
 
 @section('content')
 <div class="card-container">
-    @foreach($posts as $post)
-        @include('layouts.post', $post)
-    @endforeach
+    @if(count($posts) > 0)
+        @foreach($posts as $post)
+            @include('layouts.post', $post)
+        @endforeach
+    @else
+        @include('posts.empty')
+    @endif
 </div>
 @endsection
