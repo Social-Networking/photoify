@@ -21,7 +21,7 @@
             <div class="profile-settings">
 
                 <!-- Image Input -->
-                <div class="image-upload profile-image" {{ "data-image=\"".asset("images/".$user->image)."\"" }}>
+                <div class="image-upload profile-image" {{ "data-image=\"".asset("images/avatar/".$user->image)."\"" }}>
                     <div class="file is-boxed">
                         <label class="file-label">
                             <input class="file-input" type="file" name="image">

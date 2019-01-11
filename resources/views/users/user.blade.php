@@ -5,7 +5,7 @@
     <div class="user-start">
         <div class="is-flex is-v-center">
             <figure class="image is-96x96">
-                <img class="is-rounded" src="{{ asset('images/'.$user->image) }}">
+                <img class="is-rounded" src="{{ asset('images/avatar/'.$user->image) }}">
             </figure>
             <div>
                 <h1 class="title">

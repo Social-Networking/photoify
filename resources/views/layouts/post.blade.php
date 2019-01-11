@@ -2,14 +2,14 @@
     <div class="card-body is-transparent" style="padding: 0px;">
         <div class="card-image">
             <figure class="image is-square">
-                <img src="{{ asset('images/'.$post->image) }}">
+                <img src="{{ asset('images/posts/'.$post->image) }}">
             </figure>
         </div>
 
         <div class="card-content">
             <div class="card-userinfo">
                 <figure class="image is-48x48">
-                    <img class="is-rounded" src="{{ asset('images/'.$post->user->image) }}">
+                    <img class="is-rounded" src="{{ asset('images/avatar/'.$post->user->image) }}">
                 </figure>
                 <div class="user-text">
                     <p class="is-size-3 has-text-white">{{ $post->user->name }}</p>

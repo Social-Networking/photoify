@@ -57,7 +57,7 @@ class UsersController extends Controller
         if (null !== $request->image) {
             $imageName = time().'.'.$request->image->getClientOriginalExtension();
 
-            $request->image->move(public_path('images'), $imageName);
+            $request->image->move(public_path('images').'/avatar/', $imageName);
 
             $user->image = $imageName;
         }

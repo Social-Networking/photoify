@@ -139,7 +139,7 @@ class PostsController extends Controller
 
         $imageName = time().'.'.request()->image->getClientOriginalExtension();
 
-        request()->image->move(public_path('images'), $imageName);
+        request()->image->move(public_path('images').'/posts/', $imageName);
 
         $post = new Post();
 
