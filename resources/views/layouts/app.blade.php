@@ -76,7 +76,7 @@
                     <div class="navbar-item">
                         <div class="buttons">
                             <a class="button is-primary is-outlined" href="{{ route('register') }}">
-                                <strong>{{ __('Sign up') }}</strong>
+                                {{ __('Sign up') }}
                             </a>
                             <a class="button is-primary" href="{{ route('login') }}">
                                 {{ __('Log in') }}
