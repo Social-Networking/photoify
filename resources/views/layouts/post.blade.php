@@ -29,15 +29,6 @@
                         <a href="{{ route('posts.edit', ['id'=>$post->id]) }}" class="post-action">
                             <i class="fas fa-pen"></i>
                         </a>
-                        <form method="POST" action="{{ route('posts.destroy', ['id'=>$post->id]) }}">
-                            @csrf
-
-                            @method('DELETE')
-
-                            <button type="submit" class="post-action">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </form>
                     @endif
                 </div>
                 <time class="has-text-grey-light" datetime="{{ $post->created_at }}"></time></div>
