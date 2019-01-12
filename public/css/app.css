@@ -12541,6 +12541,37 @@ label.panel-block:hover {
   color: red;
 }
 
+.pagination {
+  margin: 1rem 0.5rem;
+}
+
+.pagination .pagination-list {
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+
+.pagination .pagination-ellipsis {
+  min-width: 2.25em;
+}
+
+.pagination .pagination-previous,
+.pagination .pagination-next,
+.pagination .pagination-link {
+  border-color: #eee;
+  background-color: #eee;
+}
+
+.pagination .pagination-link.is-current {
+  border-color: #3273dc;
+  background-color: #3273dc;
+}
+
+@media screen and (max-width: 768px) {
+  .pagination .pagination-list {
+    margin: 0 50%;
+  }
+}
+
 .navbar-item svg {
   margin-right: 5px;
 }
@@ -12865,7 +12896,7 @@ label.panel-block:hover {
 }
 
 body {
-  background: url("https://images.unsplash.com/photo-1504662880849-32592cd4884e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80");
+  background: #414141;
 }
 
 main {

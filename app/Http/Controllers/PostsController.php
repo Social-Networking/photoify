@@ -33,18 +33,25 @@ class PostsController extends Controller
             'page' => 'nullable|numeric',
         ]);
 
-        $page = Request::query('page', 0);
+        //$_GET ?page=count, default 1
+        $page = intval(Request::query('page', 1));
+
+        $pageCount = Post::count();
 
         //Posts
         $posts = Post::select('posts.*', 'likes.user_id as liked')
             ->leftJoin('likes', 'posts.id', 'likes.post_id')
             ->orderBy('id', 'desc')
-            ->skip($count * $page)
+            ->skip($count * ($page - 1))
             ->take($count)
             ->get();
 
         return view('posts.index', [
             'posts' => $posts,
+            'pagination' => [
+                'current' => $page,
+                'count' => intval(ceil($pageCount / $count)),
+            ],
         ]);
     }
 
@@ -62,12 +69,18 @@ class PostsController extends Controller
             'page' => 'nullable|numeric',
         ]);
 
-        $page = Request::query('page', 0);
+        //$_GET ?page=count, default 1
+        $page = intval(Request::query('page', 1));
+
+        $pageCount = Post::join('likes', function ($join) {
+            $join->on('posts.id', '=', 'likes.post_id')
+                    ->where('likes.user_id', Auth::id());
+        })->count();
 
         //Posts
         $posts = Post::orderBy('id', 'desc')
             ->select('posts.*', 'likes.user_id as liked')
-            ->skip($count * $page)
+            ->skip($count * ($page - 1))
             ->take($count)
             ->join('likes', function ($join) {
                 $join->on('posts.id', '=', 'likes.post_id')
@@ -77,6 +90,10 @@ class PostsController extends Controller
 
         return view('posts.index', [
             'posts' => $posts,
+            'pagination' => [
+                'current' => $page,
+                'count' => intval(ceil($pageCount / $count)),
+            ],
         ]);
     }
 
@@ -96,7 +113,14 @@ class PostsController extends Controller
             'page' => 'nullable|numeric',
         ]);
 
-        $page = Request::query('page', 0);
+        //$_GET ?page=count, default 1
+        $page = intval(Request::query('page', 1));
+
+        $pageCount = Post::count()->whereIn('posts.user_id', function ($query) {
+            return $query->select('user_2')
+            ->from('follows')
+            ->where('user_1', Auth::id());
+        })->count();
 
         //Posts
         $posts = Post::select('posts.*', 'likes.user_id as liked')
@@ -106,10 +130,14 @@ class PostsController extends Controller
                 ->where('user_1', Auth::id());
             })
             ->leftJoin('likes', 'posts.id', 'likes.post_id')
-            ->orderBy('id', 'desc')->skip($count * $page)->take($count)->get();
+            ->orderBy('id', 'desc')->skip($count * ($page + 1))->take($count)->get();
 
         return view('posts.index', [
             'posts' => $posts,
+            'pagination' => [
+                'current' => $page,
+                'count' => intval(ceil($pageCount / $count)),
+            ],
         ]);
     }
 
