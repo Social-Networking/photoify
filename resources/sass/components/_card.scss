@@ -9,10 +9,6 @@
     }
 }
 
-.card.post {
-    height: 95vh;
-}
-
 .card {
     max-width: 90vw;
     width: 30rem;
@@ -54,21 +50,6 @@
             justify-content: space-between;
             overflow: hidden;
 
-            .card-userinfo {
-                display: flex;
-                align-items: center;
-
-                figure {
-                    margin-right: 10px;
-                }
-
-                @media screen and (max-width: 410px) {
-                    figure {
-                        display: none;
-                    }
-                }
-            }
-
             .lead {
                 height: 100%;
                 padding: 1rem 0;
@@ -81,16 +62,5 @@
                 width: 100%;
             }
         }
-    }
-}
-
-.user-text {
-    p {
-        line-height: 2rem;
-        white-space: nowrap;
-    }
-
-    a {
-        margin-top: -1rem;
     }
 }

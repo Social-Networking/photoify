@@ -7,7 +7,7 @@
         </div>
 
         <div class="card-content">
-            <div class="card-userinfo">
+            <div class="user-info">
                 <figure class="image is-48x48">
                     <img class="is-rounded" src="{{ asset('images/avatar/'.$post->user->image) }}">
                 </figure>
@@ -19,9 +19,27 @@
             </div>
             <p class="lead is-size-5 has-text-white">{{ $post->description }}</p>
             <div class="card-footer">
-                <button data-path="{{ route('posts.like', ['id'=>$post->id]) }}" class="like {{ $post->liked ? "liked" : ""}}">
-                    <i class="fas fa-heart"></i>
-                </button>
+                <div class="buttons">
+
+                    <button data-path="{{ route('posts.like', ['id'=>$post->id]) }}" class="post-action like {{ $post->liked ? "liked" : ""}}">
+                        <i class="fas fa-heart"></i>
+                    </button>
+
+                    @if($post->user->id === Auth::id())
+                        <a href="{{ route('posts.edit', ['id'=>$post->id]) }}" class="post-action">
+                            <i class="fas fa-pen"></i>
+                        </a>
+                        <form method="POST" action="{{ route('posts.destroy', ['id'=>$post->id]) }}">
+                            @csrf
+
+                            @method('DELETE')
+
+                            <button type="submit" class="post-action">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </form>
+                    @endif
+                </div>
                 <time class="has-text-grey-light" datetime="{{ $post->created_at }}"></time></div>
         </div>
     </div>

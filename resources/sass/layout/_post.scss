@@ -1,0 +1,50 @@
+.card.post {
+    height: 95vh;
+}
+
+.post-action {
+    background-color: transparent;
+    border: none;
+    color: #414141;
+    outline: none;
+
+    &:hover {
+        color: #209cee;
+    }
+
+    svg {
+        width: 2rem !important;
+        height: 2rem !important;
+    }
+}
+
+.like.liked {
+    color: rgb(255, 0, 0);
+}
+
+
+.user-text {
+    p {
+        line-height: 2rem;
+        white-space: nowrap;
+    }
+
+    a {
+        margin-top: -1rem;
+    }
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+
+    figure {
+        margin-right: 10px;
+    }
+
+    @media screen and (max-width: 410px) {
+        figure {
+            display: none;
+        }
+    }
+}
