@@ -19,7 +19,7 @@
             @method('PATCH')
 
             <!-- Image input -->
-            <div class="image-upload" style="background-image: url({{ asset('images/'.$post->image) }})">
+            <div class="image-upload" style="background-image: url({{ asset('images/posts/'.$post->image) }})">
             </div>
 
 
@@ -42,7 +42,7 @@
         </form>
 
         <!-- Delete button -->
-        <form method="POST" action="{{ route('destroy', $post->id) }}">
+        <form method="POST" action="{{ route('posts.destroy', $post->id) }}">
 
             <!-- CSRF Token -->
             @csrf
