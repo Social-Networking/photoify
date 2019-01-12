@@ -221,7 +221,7 @@ class PostsController extends Controller
         $post = Post::find($id);
 
         //Only save if currently logged in users id matches orginal posters user id (Might not be needed)
-        if ($post->id === Auth::id()) {
+        if (intval($post->user_id) === Auth::id()) {
             Request::validate([
                 'description' => 'required|max:255',
             ]);
@@ -245,8 +245,7 @@ class PostsController extends Controller
     {
         $post = Post::find($id);
 
-        //Only delete if currently logged in users id matches orginal posters user id (Might not be needed)
-        if ($post->id === Auth::id()) {
+        if (intval($post->user_id) === Auth::id()) {
             $post->delete();
         }
 
