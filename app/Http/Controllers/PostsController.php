@@ -116,7 +116,7 @@ class PostsController extends Controller
         //$_GET ?page=count, default 1
         $page = intval(Request::query('page', 1));
 
-        $pageCount = Post::count()->whereIn('posts.user_id', function ($query) {
+        $pageCount = Post::whereIn('posts.user_id', function ($query) {
             return $query->select('user_2')
             ->from('follows')
             ->where('user_1', Auth::id());
@@ -173,7 +173,7 @@ class PostsController extends Controller
 
         $post->user_id = Auth::id();
         $post->image = $imageName;
-        $post->description = $request->description;
+        $post->description = request()->description;
 
         $post->save();
 
