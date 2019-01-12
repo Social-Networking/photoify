@@ -945,93 +945,9 @@ module.exports = __webpack_require__(39);
  */
 
 __webpack_require__(11);
-
-//CSRF token
-var csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-
+__webpack_require__(45);
 //Human readable dates
 window.timeago.render(document.querySelectorAll('time'));
-
-//Register .delete buttons to remove parent element
-var deleteButtons = document.querySelectorAll('.delete');
-
-deleteButtons.forEach(function (button) {
-    button.addEventListener('click', function (event) {
-        event.target.parentElement.parentElement.removeChild(parent);
-    });
-});
-
-//Image preview
-var imgContainer = document.querySelectorAll('.image-upload');
-
-imgContainer.forEach(function (img) {
-
-    //Allows us to set preview image serverside
-    if (img.hasAttribute('data-image')) {
-        var _parent = img.closest('.image-upload');
-        //Hide upload button, (shows on hover)
-        _parent.classList.add('hidden');
-
-        _parent.setAttribute('style', 'background-image: url(' + img.dataset.image + ');');
-    }
-
-    //Eventlistener for previewing imag
-    img.querySelector('input').addEventListener('change', function (event) {
-        //Create file reader
-        var reader = new FileReader();
-
-        //Input file
-        var file = event.target.files[0];
-
-        var parent = event.target.closest('.image-upload');
-
-        //Register eventlistener for reader
-        //This event will be called once reader.readAsDataUrl has finished
-        reader.addEventListener('load', function () {
-            //Hide upload button, (shows on hover)
-            parent.classList.add('hidden');
-
-            //Set uploaded file as background on
-            parent.setAttribute('style', 'background-image: url(' + reader.result + ');');
-        }, false);
-
-        if (file) {
-            reader.readAsDataURL(file);
-        }
-    });
-});
-
-//Navbar burger
-var burgerToggle = document.querySelector('.navbar-burger');
-
-burgerToggle.addEventListener('click', function (event) {
-    var target = document.querySelector(event.target.dataset.target);
-
-    event.target.classList.toggle('is-active');
-    target.classList.toggle('is-active');
-});
-
-//Like posts with axios
-var likeButtons = document.querySelectorAll('.like');
-
-likeButtons.forEach(function (button) {
-    button.addEventListener('click', function () {
-        button.classList.toggle('liked');
-
-        var path = button.dataset.path;
-
-        fetch(path, {
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            method: 'post',
-            credentials: 'same-origin',
-            body: JSON.stringify({
-                '_token': csrf
-            })
-        });
-    });
-});
 
 /***/ }),
 /* 11 */
@@ -19538,6 +19454,104 @@ exports.getTimerId = getTimerId;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 40 */,
+/* 41 */,
+/* 42 */,
+/* 43 */,
+/* 44 */,
+/* 45 */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(46);
+__webpack_require__(48);
+__webpack_require__(47);
+
+/***/ }),
+/* 46 */
+/***/ (function(module, exports) {
+
+//Image preview
+var imgContainer = document.querySelectorAll('.image-upload');
+
+imgContainer.forEach(function (img) {
+
+    //Allows us to set preview image serverside
+    if (img.hasAttribute('data-image')) {
+        var parent = img.closest('.image-upload');
+        //Hide upload button, (shows on hover)
+        parent.classList.add('hidden');
+
+        parent.setAttribute('style', 'background-image: url(' + img.dataset.image + ');');
+    }
+
+    //Eventlistener for previewing imag
+    img.querySelector('input').addEventListener('change', function (event) {
+        //Create file reader
+        var reader = new FileReader();
+
+        //Input file
+        var file = event.target.files[0];
+
+        var parent = event.target.closest('.image-upload');
+
+        //Register eventlistener for reader
+        //This event will be called once reader.readAsDataUrl has finished
+        reader.addEventListener('load', function () {
+            //Hide upload button, (shows on hover)
+            parent.classList.add('hidden');
+
+            //Set uploaded file as background on
+            parent.setAttribute('style', 'background-image: url(' + reader.result + ');');
+        }, false);
+
+        if (file) {
+            reader.readAsDataURL(file);
+        }
+    });
+});
+
+/***/ }),
+/* 47 */
+/***/ (function(module, exports) {
+
+//Navbar burger
+var toggle = document.querySelector('.navbar-burger');
+
+toggle.addEventListener('click', function (event) {
+    var target = document.querySelector(event.target.dataset.target);
+
+    event.target.classList.toggle('is-active');
+    target.classList.toggle('is-active');
+});
+
+/***/ }),
+/* 48 */
+/***/ (function(module, exports) {
+
+//Like posts with fetch
+var like = document.querySelectorAll('.like');
+var csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+
+like.forEach(function (button) {
+    button.addEventListener('click', function () {
+        button.classList.toggle('liked');
+
+        var path = button.dataset.path;
+
+        fetch(path, {
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            method: 'post',
+            credentials: 'same-origin',
+            body: JSON.stringify({
+                '_token': csrf
+            })
+        });
+    });
+});
 
 /***/ })
 /******/ ]);
