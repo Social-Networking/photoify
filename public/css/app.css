@@ -12634,11 +12634,6 @@ label.panel-block:hover {
   overflow: hidden;
 }
 
-.card .card-body .card-content .lead {
-  height: 100%;
-  padding: 1rem 0;
-}
-
 .card .card-body .card-content .card-footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
@@ -12648,6 +12643,7 @@ label.panel-block:hover {
           justify-content: space-between;
   border: 0;
   width: 100%;
+  margin-bottom: -1.5rem;
 }
 
 .navbar-item svg {
@@ -12831,7 +12827,11 @@ label.panel-block:hover {
 }
 
 .lead {
-  padding: 1rem 0.5rem !important;
+  height: 100%;
+  padding: 0 0.5rem;
+  word-break: break-word;
+  overflow: hidden;
+  max-height: 13vh;
 }
 
 .like.liked {
