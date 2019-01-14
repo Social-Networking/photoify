@@ -12614,6 +12614,8 @@ label.panel-block:hover {
 }
 
 .card .card-body .card-image figure img {
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 16px 16px 0px 0px;
 }
 
