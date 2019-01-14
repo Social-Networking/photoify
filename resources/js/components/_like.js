@@ -4,6 +4,16 @@ const csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('con
 
 like.forEach(button => {
     button.addEventListener('click', () => {
+
+        //Update counter
+        const counter = button.querySelector('.likes')
+
+        if (button.classList.contains('liked')) {
+            counter.innerHTML = parseInt(counter.innerHTML) - 1
+        } else {
+            counter.innerHTML = parseInt(counter.innerHTML) + 1
+        }
+
         button.classList.toggle('liked')
 
         const path = button.dataset.path

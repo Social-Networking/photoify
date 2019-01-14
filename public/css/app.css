@@ -12818,6 +12818,7 @@ label.panel-block:hover {
   border: none;
   color: #414141;
   outline: none;
+  margin-top: auto;
 }
 
 .post-action:hover {
@@ -12829,8 +12830,17 @@ label.panel-block:hover {
   height: 2rem !important;
 }
 
+.lead {
+  padding: 1rem 0.5rem !important;
+}
+
 .like.liked {
   color: red;
+}
+
+span.likes::before {
+  content: "";
+  margin-left: -100%;
 }
 
 .user-text p {

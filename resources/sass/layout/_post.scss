@@ -7,6 +7,7 @@
     border: none;
     color: #414141;
     outline: none;
+    margin-top: auto;
 
     &:hover {
         color: #209cee;
@@ -18,10 +19,19 @@
     }
 }
 
+.lead {
+    padding: 1rem 0.5rem !important;
+}
+
+
 .like.liked {
     color: rgb(255, 0, 0);
 }
 
+span.likes::before {
+    content: "";
+    margin-left: -100%;
+}
 
 .user-text {
     p {
