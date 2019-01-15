@@ -27,7 +27,7 @@ class UsersController extends Controller
     public function show($id)
     {
         return view('users.user', [
-            'user' => User::with(['posts', 'posts.likes'])->find($id),
+            'user' => User::findOrFail($id),
             'followed' => Follow::where([
                 ['user_1', Auth::id()],
                 ['user_2', $id],

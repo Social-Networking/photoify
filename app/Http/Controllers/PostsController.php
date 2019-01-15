@@ -35,14 +35,15 @@ class PostsController extends Controller
         //$_GET ?page=count, default 1
         $page = intval(Request::query('page', 1));
 
-        //Posts
-        $posts = Post::with('likes')
-        ->orderBy('id', 'desc')
-        ->skip($count * ($page - 1))
-        ->take($count)
-        ->get();
+        $pageCount = Post::count();
 
-        $pageCount = $posts->count();
+        //Posts
+        $posts = Post::select('posts.*', 'likes.user_id as liked')
+            ->leftJoin('likes', 'posts.id', 'likes.post_id')
+            ->orderBy('id', 'desc')
+            ->skip($count * ($page - 1))
+            ->take($count)
+            ->get();
 
         return view('posts.index', [
             'posts' => $posts,
@@ -70,9 +71,14 @@ class PostsController extends Controller
         //$_GET ?page=count, default 1
         $page = intval(Request::query('page', 1));
 
+        $pageCount = Post::join('likes', function ($join) {
+            $join->on('posts.id', '=', 'likes.post_id')
+                    ->where('likes.user_id', Auth::id());
+        })->count();
+
         //Posts
-        $posts = Post::with('likes')
-            ->orderBy('id', 'desc')
+        $posts = Post::orderBy('id', 'desc')
+            ->select('posts.*', 'likes.user_id as liked')
             ->skip($count * ($page - 1))
             ->take($count)
             ->join('likes', function ($join) {
@@ -80,8 +86,6 @@ class PostsController extends Controller
                         ->where('likes.user_id', Auth::id());
             })
             ->get();
-
-        $pageCount = $posts->count();
 
         return view('posts.index', [
             'posts' => $posts,
@@ -111,16 +115,21 @@ class PostsController extends Controller
         //$_GET ?page=count, default 1
         $page = intval(Request::query('page', 1));
 
+        $pageCount = Post::whereIn('posts.user_id', function ($query) {
+            return $query->select('user_2')
+            ->from('follows')
+            ->where('user_1', Auth::id());
+        })->count();
+
         //Posts
-        $posts = Post::with(['likes'])
+        $posts = Post::select('posts.*', 'likes.user_id as liked')
             ->whereIn('posts.user_id', function ($query) {
                 return $query->select('user_2')
                 ->from('follows')
                 ->where('user_1', Auth::id());
             })
-            ->orderBy('id', 'desc')->skip($count * ($page + 1))->take($count)->get();
-
-        $pageCount = $posts->count();
+            ->leftJoin('likes', 'posts.id', 'likes.post_id')
+            ->orderBy('id', 'desc')->skip($count * ($page - 1))->take($count)->get();
 
         return view('posts.index', [
             'posts' => $posts,

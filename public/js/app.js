@@ -19511,16 +19511,6 @@ var csrf = document.querySelector('meta[name="csrf-token"]').getAttribute('conte
 
 like.forEach(function (button) {
     button.addEventListener('click', function () {
-
-        //Update counter
-        var counter = button.querySelector('.likes');
-
-        if (button.classList.contains('liked')) {
-            counter.innerHTML = parseInt(counter.innerHTML) - 1;
-        } else {
-            counter.innerHTML = parseInt(counter.innerHTML) + 1;
-        }
-
         button.classList.toggle('liked');
 
         var path = button.dataset.path;
