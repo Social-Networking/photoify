@@ -12760,8 +12760,12 @@ label.panel-block:hover {
 }
 
 .index-container {
+<<<<<<< HEAD
   max-width: 30rem;
   width: 100%;
+=======
+  width: 30rem;
+>>>>>>> 806267013da41684904d27fe92de6d45d4ba45fa
   height: 80vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -12792,9 +12796,12 @@ label.panel-block:hover {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+<<<<<<< HEAD
   -webkit-box-pack: space-evenly;
       -ms-flex-pack: space-evenly;
           justify-content: space-evenly;
+=======
+>>>>>>> 806267013da41684904d27fe92de6d45d4ba45fa
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -12802,6 +12809,7 @@ label.panel-block:hover {
   margin-top: 10vh;
   padding: 1rem;
   width: 100%;
+<<<<<<< HEAD
   height: 90%;
 }
 
@@ -12879,6 +12887,8 @@ span.likes {
   .user-info figure {
     display: none;
   }
+=======
+>>>>>>> 806267013da41684904d27fe92de6d45d4ba45fa
 }
 
 .is-transparent {
