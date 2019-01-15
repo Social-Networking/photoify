@@ -2,12 +2,17 @@
     height: 95vh;
 }
 
+
 .post-action {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-color: transparent;
     border: none;
     color: #414141;
     outline: none;
     margin-top: auto;
+    padding: 0;
 
     &:hover {
         color: #209cee;
@@ -32,9 +37,8 @@
     color: rgb(255, 0, 0);
 }
 
-span.likes::before {
-    content: "";
-    margin-left: -100%;
+span.likes {
+    font-weight: bold;
 }
 
 .user-text {

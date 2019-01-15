@@ -12810,11 +12810,22 @@ label.panel-block:hover {
 }
 
 .post-action {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   background-color: transparent;
   border: none;
   color: #414141;
   outline: none;
   margin-top: auto;
+  padding: 0;
 }
 
 .post-action:hover {
@@ -12838,9 +12849,8 @@ label.panel-block:hover {
   color: red;
 }
 
-span.likes::before {
-  content: "";
-  margin-left: -100%;
+span.likes {
+  font-weight: bold;
 }
 
 .user-text p {
@@ -12912,7 +12922,7 @@ span.likes::before {
 }
 
 body {
-  background: #414141;
+  background: #fff;
 }
 
 main {
