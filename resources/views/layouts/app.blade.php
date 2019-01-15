@@ -42,7 +42,6 @@
                             <i class="fas fa-camera-retro"></i>{{ __('Create') }}
                         </a>
                     </div>
-                    @endif
                     <a class="navbar-item" href="{{ route('posts') }}">
                         <i class="far fa-newspaper"></i>{{ __('New') }}
                     </a>
@@ -52,6 +51,7 @@
                     <a class="navbar-item" href="{{ route('posts.liked') }}">
                         <i class="fas fa-heart"></i>{{ __('Liked') }}
                     </a>
+                    @endif
 
                 </div>
 
