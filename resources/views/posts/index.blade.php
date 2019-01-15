@@ -11,7 +11,7 @@
     @endif
 </div>
 
-@if(isset($pagination['current']) && isset($pagination['count']))
+@if(isset($pagination['current'], $pagination['count']) && $pagination['count'] > 0)
     <nav class="pagination is-rounded" role="navigation" aria-label="pagination">
         <ul class="pagination-list">
 
