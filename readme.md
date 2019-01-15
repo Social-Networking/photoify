@@ -1,6 +1,6 @@
-# Photoify
+<img src="public/svg/photoify_logo.svg" alt="Photoify" width="350px"> 
 
-Instagram clone in Laravel
+Instagram "inspired" social media built with Laravel.
 
 ## Installation
 
