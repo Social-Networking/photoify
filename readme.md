@@ -6,9 +6,9 @@ Instagram clone in Laravel
 
 ### Requirements
 
--PHP
--Node & NPM
--Composer
+- PHP
+- Node & NPM
+- Composer
 
 ### Install
 
