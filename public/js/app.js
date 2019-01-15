@@ -931,7 +931,7 @@ exports.nextInterval = nextInterval;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(10);
-module.exports = __webpack_require__(39);
+module.exports = __webpack_require__(43);
 
 
 /***/ }),
@@ -945,7 +945,7 @@ module.exports = __webpack_require__(39);
  */
 
 __webpack_require__(11);
-__webpack_require__(45);
+__webpack_require__(39);
 //Human readable dates
 window.timeago.render(document.querySelectorAll('time'));
 
@@ -19451,25 +19451,14 @@ exports.getTimerId = getTimerId;
 
 /***/ }),
 /* 39 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 40 */,
-/* 41 */,
-/* 42 */,
-/* 43 */,
-/* 44 */,
-/* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(46);
-__webpack_require__(48);
-__webpack_require__(47);
+__webpack_require__(40);
+__webpack_require__(41);
+__webpack_require__(42);
 
 /***/ }),
-/* 46 */
+/* 40 */
 /***/ (function(module, exports) {
 
 //Image preview
@@ -19513,21 +19502,7 @@ imgContainer.forEach(function (img) {
 });
 
 /***/ }),
-/* 47 */
-/***/ (function(module, exports) {
-
-//Navbar burger
-var toggle = document.querySelector('.navbar-burger');
-
-toggle.addEventListener('click', function (event) {
-    var target = document.querySelector(event.target.dataset.target);
-
-    event.target.classList.toggle('is-active');
-    target.classList.toggle('is-active');
-});
-
-/***/ }),
-/* 48 */
+/* 41 */
 /***/ (function(module, exports) {
 
 //Like posts with fetch
@@ -19562,6 +19537,26 @@ like.forEach(function (button) {
         });
     });
 });
+
+/***/ }),
+/* 42 */
+/***/ (function(module, exports) {
+
+//Navbar burger
+var toggle = document.querySelector('.navbar-burger');
+
+toggle.addEventListener('click', function (event) {
+    var target = document.querySelector(event.target.dataset.target);
+
+    event.target.classList.toggle('is-active');
+    target.classList.toggle('is-active');
+});
+
+/***/ }),
+/* 43 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);
