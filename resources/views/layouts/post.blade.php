@@ -20,8 +20,8 @@
             <p class="lead is-size-5 has-text-white">{{ $post->description }}</p>
             <div class="card-footer">
                 <div class="buttons">
-
-                    <button data-path="{{ route('posts.like', ['id'=>$post->id]) }}" class="post-action like {{ $post->liked ? "liked" : ""}}">
+                    <button data-path="{{ route('posts.like', ['id'=>$post->id]) }}" class="post-action like {{ $post->likes->where('user_id', Auth::id())->count() > 0 ? "liked" : ""}}">
+                        <span class="likes">{{ $post->likes->count() < 999 ? $post->likes->count() : "999+" }}</span>
                         <i class="fas fa-heart"></i>
                     </button>
 
