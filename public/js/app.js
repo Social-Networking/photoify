@@ -19453,7 +19453,7 @@ exports.getTimerId = getTimerId;
 /* 39 */
 /***/ (function(module, exports) {
 
-throw new Error("Module build failed: ModuleBuildError: Module build failed: \n.index-container {\n                 ^\n      Invalid CSS after \".index-container {\": expected \"}\", was \"<<<<<<< HEAD\"\n      in /Users/laykith/Dropbox/public_html/yrgo/photoify/resources/sass/layout/_index.scss (line 1, column 19)\n    at runLoaders (/Users/laykith/Dropbox/public_html/yrgo/photoify/node_modules/webpack/lib/NormalModule.js:195:19)\n    at /Users/laykith/Dropbox/public_html/yrgo/photoify/node_modules/loader-runner/lib/LoaderRunner.js:364:11\n    at /Users/laykith/Dropbox/public_html/yrgo/photoify/node_modules/loader-runner/lib/LoaderRunner.js:230:18\n    at context.callback (/Users/laykith/Dropbox/public_html/yrgo/photoify/node_modules/loader-runner/lib/LoaderRunner.js:111:13)\n    at Object.asyncSassJobQueue.push [as callback] (/Users/laykith/Dropbox/public_html/yrgo/photoify/node_modules/sass-loader/lib/loader.js:55:13)\n    at Object.done [as callback] (/Users/laykith/Dropbox/public_html/yrgo/photoify/node_modules/neo-async/async.js:8077:18)\n    at options.error (/Users/laykith/Dropbox/public_html/yrgo/photoify/node_modules/node-sass/lib/index.js:294:32)");
+// removed by extract-text-webpack-plugin
 
 /***/ }),
 /* 40 */,
