@@ -34,6 +34,7 @@ class PostsController extends Controller
 
         //$_GET ?page=count, default 1
         $page = intval(Request::query('page', 1));
+        $pageCount = Post::count();
 
         //Posts
         $posts = Post::with(['likes', 'user'])
@@ -41,8 +42,6 @@ class PostsController extends Controller
         ->skip($count * ($page - 1))
         ->take($count)
         ->get();
-
-        $pageCount = $posts->count();
 
         return view('posts.index', [
             'posts' => $posts,
@@ -69,6 +68,10 @@ class PostsController extends Controller
 
         //$_GET ?page=count, default 1
         $page = intval(Request::query('page', 1));
+        $pageCount = Post::whereIn('id', function ($query) {
+            return $query->select('post_id')->from('likes')->where('user_id', Auth::id());
+        })->count();
+
 
         //Posts
         $posts = Post::with(['likes', 'user'])
@@ -79,8 +82,6 @@ class PostsController extends Controller
             ->skip($count * ($page - 1))
             ->take($count)
             ->get();
-
-        $pageCount = $posts->count();
 
         return view('posts.index', [
             'posts' => $posts,
@@ -109,6 +110,9 @@ class PostsController extends Controller
 
         //$_GET ?page=count, default 1
         $page = intval(Request::query('page', 1));
+        $pageCount = Post::whereIn('user_id', function ($query) {
+            return $query->select('user_2')->from('follows')->where('user_1', Auth::id());
+        })->count();
 
         //Posts
         $posts = Post::with(['likes', 'user'])
@@ -119,8 +123,6 @@ class PostsController extends Controller
         ->skip($count * ($page - 1))
         ->take($count)
         ->get();
-
-        $pageCount = $posts->count();
 
         return view('posts.index', [
             'posts' => $posts,
