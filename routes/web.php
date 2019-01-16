@@ -17,7 +17,10 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::middleware(['auth'])->group(function() {
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', function () {
+        return redirect()->route('posts');
+    });
     //Post routes
     Route::get('/posts', 'PostsController@index')->name('posts');
     Route::get('/posts/following', 'PostsController@following')->name('posts.following');
