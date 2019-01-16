@@ -1,4 +1,4 @@
-<img src="public/svg/photoify_logo.svg" alt="Photoify" width="350px"> 
+<img src="public/svg/photoify_logo.svg" alt="Photoify" width="100%"> 
 
 Instagram "inspired" social media built with Laravel.
 
@@ -19,6 +19,13 @@ Instagram "inspired" social media built with Laravel.
 #### Optional
 
 You can run `php artisan db:seed` to seed the database with demo data
+
+
+## Testers
+
+- [Benjamin Fransson](https://github.com/erhuz)
+- [Lovisa Hallgren](https://github.com/lovisahallgren)
+
 
 ## Licence
 
