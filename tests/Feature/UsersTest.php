@@ -42,7 +42,7 @@ class UsersTest extends TestCase
         $users = factory(User::class, 2)->create();
 
         //Follow request
-        $this->actingAs($users->first())->post('/user/'.$users->last()->id);
+        $this->actingAs($users->first())->post(route('account.follow', ['id' => $users->last()->id]));
 
         $this->assertDatabaseHas('follows', [
             'user_1' => $users->first()->id,
