@@ -36,6 +36,29 @@ class UsersTest extends TestCase
     /**
      * @test
      */
+    public function a_user_can_change_display_name()
+    {
+        $this->withoutExceptionHandling();
+
+        $user = factory(User::class)->create();
+
+        $attributes = [
+            'display_name' => $this->faker->name,
+            'email' => $user->email,
+            'password' => 'secret',
+        ];
+
+        $this->actingAs($user)->patch(route('account.update'), $attributes);
+
+        $this->assertDatabaseHas('users', [
+            'id' => $user->id,
+            'display_name' => $attributes['display_name'],
+        ]);
+    }
+
+    /**
+     * @test
+     */
     public function a_user_can_follow_another()
     {
         //Create users
